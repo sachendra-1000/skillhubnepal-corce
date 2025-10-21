@@ -252,23 +252,25 @@ export default function Page() {
       </section>
 
       <div className="footerCta">
-        <button className="btn btnPrimary">Continue to Day 4</button>
+        <a href="/day4">
+          <button className="btn btnPrimary">Continue to Day 4</button>
+        </a>
       </div>
 
-      {/* Global theme: dark indigo + purple accents, larger base type */}
+      {/* Global theme matching day1 and day2 */}
       <style jsx global>{`
         :root {
           /* Colors */
-          --bg: #0b0b12;
-          --panel: #121224;
-          --panel-2: #15152a;
-          --border: #26243a;
-          --text: #f1f1fa;
-          --muted: #c6c7d4;
+          --bg: #0b0b0f;
+          --panel: #23263a;
+          --panel-2: #181a2a;
+          --border: rgba(255, 255, 255, 0.06);
+          --text: #ffffff;
+          --muted: #a1a1aa;
 
-          --accent: #8b5cf6;
-          --accent-2: #a78bfa;
-          --focus: rgba(139, 92, 246, 0.35);
+          --accent: #a855f7;
+          --accent-2: #c084fc;
+          --focus: rgba(168, 85, 247, 0.35);
 
           /* Reuse existing semantic names in markup */
           --amber: var(--accent);
@@ -303,14 +305,14 @@ export default function Page() {
         }
 
         * { box-sizing: border-box; }
-        ::selection { background: var(--accent); color: #0b0b12; }
+        ::selection { background: var(--accent); color: #0b0b0f; }
         :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
         /* Scrollbar (WebKit) for nicer overflow areas */
         ::-webkit-scrollbar { height: 10px; width: 10px; }
-        ::-webkit-scrollbar-track { background: #0f1020; }
-        ::-webkit-scrollbar-thumb { background: #3a3563; border-radius: 999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #4a4390; }
+        ::-webkit-scrollbar-track { background: var(--panel-2); }
+        ::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.3); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.5); }
 
         /* Motion safety */
         @media (prefers-reduced-motion: reduce) {
@@ -345,7 +347,7 @@ export default function Page() {
           width: auto;
           height: auto;
           padding: 8px 12px;
-          background: #1b1b33;
+          background: var(--panel);
           color: var(--text);
           border-radius: 8px;
           z-index: 1000;
@@ -380,7 +382,7 @@ export default function Page() {
           border: 1px solid var(--border);
           border-radius: var(--radius-lg);
           padding: 22px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 0 1px rgba(139, 92, 246, 0.05);
+          box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 30px rgba(0, 0, 0, 0.45);
         }
         .card + .card { margin-top: 4px; }
 
@@ -410,8 +412,8 @@ export default function Page() {
           width: min(540px, 100%);
           height: auto;
           border-radius: var(--radius);
-          border: 1px solid rgba(139, 92, 246, 0.25);
-          background: #151528;
+          border: 1px solid rgba(168, 85, 247, 0.2);
+          background: var(--panel-2);
           object-fit: cover;
         }
 
@@ -443,7 +445,7 @@ export default function Page() {
           border-radius: 10px;
           border: 1px solid var(--border);
           -webkit-overflow-scrolling: touch;
-          background: #0f1020;
+          background: var(--panel-2);
         }
         .table {
           width: 100%;
@@ -453,7 +455,7 @@ export default function Page() {
           font-size: var(--fs-md);
         }
         .th, .td {
-          border-top: 1px solid rgba(139, 92, 246, 0.12);
+          border-top: 1px solid var(--border);
           padding: 14px 14px;
           vertical-align: middle;
         }
@@ -464,11 +466,11 @@ export default function Page() {
           border-top: 0;
           color: var(--amber-2);
           text-align: left;
-          background: #13142a;
+          background: var(--panel);
           font-weight: 700;
           font-size: calc(var(--fs-md) + 1px);
         }
-        tbody tr:hover td { background: rgba(139, 92, 246, 0.07); }
+        tbody tr:hover td { background: rgba(168, 85, 247, 0.07); }
 
         .left { text-align: left; }
         .right { text-align: right; }
@@ -478,14 +480,14 @@ export default function Page() {
           font-feature-settings: 'tnum';
         }
         tbody tr:nth-child(even) td {
-          background: rgba(139, 92, 246, 0.05);
+          background: rgba(168, 85, 247, 0.05);
         }
 
         .cellInput {
           width: 160px;
           background: var(--panel-2);
           color: var(--text);
-          border: 1px solid rgba(139, 92, 246, 0.5);
+          border: 1px solid rgba(168, 85, 247, 0.4);
           border-radius: 10px;
           padding: 10px 12px;
           font-size: var(--fs-md);
@@ -509,7 +511,7 @@ export default function Page() {
           margin: 16px 0 4px;
         }
         .btn {
-          background: #1b1b33;
+          background: var(--panel);
           color: var(--amber-2);
           border: 1px solid var(--border);
           padding: 12px 16px;
@@ -519,14 +521,17 @@ export default function Page() {
           transition: transform 0.05s ease, box-shadow 0.2s ease, background 0.2s ease;
           min-height: 46px;
         }
-        .btn:hover { box-shadow: 0 0 0 4px var(--focus); background: #202040; }
+        .btn:hover { box-shadow: 0 0 0 4px var(--focus); background: rgba(168, 85, 247, 0.1); }
         .btn:active { transform: translateY(1px); }
         .btnPrimary {
-          background: linear-gradient(180deg, #6f54ff, #5a45d9);
+          background: linear-gradient(90deg, #3b82f6, #2563eb);
           color: white;
-          border: 1px solid #4f3fc0;
+          border: 0;
+          box-shadow: 0 10px 26px rgba(37, 99, 235, 0.4);
+          font-weight: 800;
+          border-radius: 999px;
         }
-        .btnPrimary:hover { background: linear-gradient(180deg, #7b60ff, #634ef0); }
+        .btnPrimary:hover { background: linear-gradient(90deg, #60a5fa, #3b82f6); box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5); }
 
         .footerCta {
           width: var(--content-w);

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#0b0b12] text-gray-200">
+    <div className="min-h-screen bg-[#0b0b0f] text-white">
       <Header />
 
       <main className="mx-auto max-w-6xl px-4">
@@ -11,12 +11,12 @@ export default function Page() {
         <section className="pt-8 text-center md:pt-12">
           <StepDots current={5} />
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight md:text-5xl">
-            Day 5:{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-white">Day 5:</span>{" "}
+            <span className="bg-gradient-to-r from-[#a855f7] to-[#7c3aed] bg-clip-text text-transparent">
               Promotion & Implementation
             </span>
           </h1>
-          <p className="mx-auto mt-3 max-w-3xl text-sm text-gray-400 md:text-base">
+          <p className="mx-auto mt-3 max-w-3xl text-sm text-[#d1d1d6] md:text-base">
             You’ve mastered the skills, now it’s time to showcase them to the world.
             Let’s explore how to promote and implement your newfound knowledge.
           </p>
@@ -75,7 +75,7 @@ export default function Page() {
         <div className="flex items-center justify-center py-10">
           <Link
             href="#"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-600/30 transition hover:from-purple-500 hover:to-fuchsia-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] px-6 py-3 font-extrabold text-white shadow-[0_10px_26px_rgba(37,99,235,0.4)] transition hover:from-[#60a5fa] hover:to-[#3b82f6] hover:shadow-[0_10px_30px_rgba(37,99,235,0.5)] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
           >
             Complete Journey & Get Certified
             <ArrowRightIcon className="h-5 w-5" />
@@ -90,7 +90,7 @@ export default function Page() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-white/10 bg-[#0b0b12]/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#0b0b0f]/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link href="/" className="text-lg font-extrabold tracking-tight text-white">
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -99,7 +99,7 @@ function Header() {
         </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm text-gray-300 md:flex">
+        <nav className="hidden items-center gap-8 text-sm text-[#e5e5e5] md:flex">
           <NavLink href="">Home</NavLink>
           
           <NavLink href="#">About</NavLink>
@@ -126,8 +126,8 @@ function StepDots({ current }: { current: number }) {
           className={[
             "flex h-8 w-8 items-center justify-center rounded-full border text-sm font-semibold",
             n === current
-              ? "border-purple-400 bg-purple-600 text-white ring-2 ring-fuchsia-400/50"
-              : "border-white/10 bg-white/5 text-gray-300",
+              ? "border-[#c084fc] bg-gradient-to-b from-[#c084fc] to-[#7c3aed] text-white shadow-[0_10px_22px_rgba(124,58,237,0.35)]"
+              : "border-white/[0.06] bg-[#181a2a] text-[#a1a1aa]",
           ].join(" ")}
         >
           {n}
@@ -149,9 +149,9 @@ function Panel({
   icon?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 shadow-xl ring-1 ring-white/5">
+    <div className="rounded-2xl border border-white/[0.06] bg-[#23263a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
       <h3 className={`flex items-center gap-2 text-xl font-extrabold ${accent}`}>
-        <span className="text-purple-400">{icon}</span>
+        <span className="text-[#c084fc]">{icon}</span>
         {title}
       </h3>
       <div className="mt-4 space-y-5">{children}</div>
@@ -163,7 +163,7 @@ function Block({ title, children }: { title: string; children: React.ReactNode }
   return (
     <div>
       <h4 className="font-semibold text-white">{title}</h4>
-      <p className="mt-1 text-sm leading-relaxed text-gray-300">{children}</p>
+      <p className="mt-1 text-sm leading-relaxed text-[#a1a1aa]">{children}</p>
     </div>
   );
 }

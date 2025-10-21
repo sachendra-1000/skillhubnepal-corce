@@ -2,19 +2,19 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#0b0b12] text-gray-200">
+    <div className="min-h-screen bg-[#0b0b0f] text-white">
       <Header />
 
       <main className="mx-auto max-w-6xl px-4">
         {/* Hero */}
         <section className="py-12 text-center md:py-16">
           <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
-            Day 4:{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-white">Day 4:</span>{" "}
+            <span className="bg-gradient-to-r from-[#a855f7] to-[#7c3aed] bg-clip-text text-transparent">
              Personal Branding & Content Strategy
             </span>
           </h1>
-          <p className="mt-3 text-sm text-gray-400 md:text-base">
+          <p className="mt-3 text-sm text-[#d1d1d6] md:text-base">
             Master the art of building a compelling online presence and creating content that
             resonates.
           </p>
@@ -27,7 +27,7 @@ export default function Page() {
           <div className="mt-4 grid gap-6 md:grid-cols-2">
             <Card>
               
-              <p className="mt-2 text-sm text-gray-300">
+              <p className="mt-2 text-sm text-[#e9e9ee]">
                 Define your personal brand by identifying your unique values, skills, and
                 passions. Your brand is your story. What makes you stand out?
               </p>
@@ -39,7 +39,7 @@ export default function Page() {
               <h3 className="text-lg font-semibold text-white">
                 Actionable Insights
               </h3>
-              <p className="mt-2 text-sm text-gray-300">
+              <p className="mt-2 text-sm text-[#e9e9ee]">
                 Apply these steps to start building your brand today:
               </p>
               <ul className="mt-4 space-y-3 text-sm">
@@ -77,7 +77,7 @@ export default function Page() {
         <section className="mt-10">
           <SectionTitle icon={<StrategyIcon />}>Content Strategy</SectionTitle>
 
-          <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-xl ring-1 ring-white/5 md:p-8">
+          <div className="mt-4 rounded-2xl border border-white/[0.06] bg-[#23263a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)] md:p-8">
             <h3 className="text-lg font-semibold text-white">
               The 3 Pillars of a Winning Content Strategy
             </h3>
@@ -101,17 +101,14 @@ export default function Page() {
 
         {/* CTA */}
         <div className="flex flex-col items-center justify-center gap-3 py-10">
-          <button
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-600/30 transition hover:from-purple-500 hover:to-fuchsia-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
-            type="button"
-          >
-        <Link
-            href="/day5"
-            className="text-sm font-medium text-purple-300 transition hover:text-purple-200"
-          >
-            Proceed to Day 5 →
+          <Link href="/day5">
+            <button
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] px-6 py-3 font-extrabold text-white shadow-[0_10px_26px_rgba(37,99,235,0.4)] transition hover:from-[#60a5fa] hover:to-[#3b82f6] hover:shadow-[0_10px_30px_rgba(37,99,235,0.5)] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+              type="button"
+            >
+              Proceed to Day 5 →
+            </button>
           </Link>
-          </button>
 
         </div>
       </main>
@@ -123,7 +120,7 @@ export default function Page() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-white/10 bg-[#0b0b12]/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#0b0b0f]/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link
           href="/"
@@ -135,7 +132,7 @@ function Header() {
         </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm text-gray-300 md:flex">
+        <nav className="hidden items-center gap-8 text-sm text-[#e5e5e5] md:flex">
           <NavLink href="#">Home</NavLink>
          
           <NavLink href="#">About</NavLink>
@@ -166,7 +163,7 @@ function SectionTitle({
 }) {
   return (
     <h2 className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white">
-      <span className="text-purple-400">{icon}</span>
+      <span className="text-[#c084fc]">{icon}</span>
       {children}
     </h2>
   );
@@ -176,7 +173,7 @@ function SectionTitle({
 
 function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 shadow-xl ring-1 ring-white/5">
+    <div className="rounded-2xl border border-white/[0.06] bg-[#181a2a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
       {children}
     </div>
   );
@@ -185,8 +182,8 @@ function Card({ children }: { children: React.ReactNode }) {
 function Rule({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <CheckIcon className="mt-0.5 h-5 w-5 text-purple-400" />
-      <span className="text-gray-300">{children}</span>
+      <CheckIcon className="mt-0.5 h-5 w-5 text-[#c084fc]" />
+      <span className="text-[#a1a1aa]">{children}</span>
     </li>
   );
 }
@@ -194,8 +191,8 @@ function Rule({ children }: { children: React.ReactNode }) {
 function Dot({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-purple-400" />
-      <span className="text-gray-300">{children}</span>
+      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#c084fc]" />
+      <span className="text-[#a1a1aa]">{children}</span>
     </li>
   );
 }
@@ -210,13 +207,13 @@ function ToolCard({
   desc: string;
 }) {
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow ring-1 ring-white/5">
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 ring-1 ring-inset ring-purple-400/30">
+    <div className="flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-[#181a2a] p-5 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
+      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-b from-[#c084fc] to-[#7c3aed] shadow-[0_10px_22px_rgba(124,58,237,0.35)] text-white">
         {icon}
       </div>
       <div>
         <h4 className="font-semibold text-white">{title}</h4>
-        <p className="mt-0.5 text-xs text-gray-400">{desc}</p>
+        <p className="mt-0.5 text-xs text-[#a1a1aa]">{desc}</p>
       </div>
     </div>
   );
@@ -232,13 +229,13 @@ function Pillar({
   color?: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5 ring-1 ring-white/5">
+    <div className="rounded-xl border border-white/[0.06] bg-[#181a2a] p-5 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
       <div
         className={`inline-flex items-center rounded-full bg-gradient-to-r ${color} px-3 py-1 text-xs font-bold text-black/90`}
       >
         {number}
       </div>
-      <p className="mt-3 text-sm text-gray-300">{children}</p>
+      <p className="mt-3 text-sm text-[#a1a1aa]">{children}</p>
     </div>
   );
 }
