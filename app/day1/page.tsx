@@ -42,24 +42,15 @@ export default function Page() {
         <section className="vision">
           <h2 className="visionHeading">COMPANY MISSION</h2>
           <p className="visionBody">
-            At Skill Hub Nepal, we are dedicated to empowering individuals by offering a wide
-            range of online learning opportunities that enhance digital skills. Our affiliate
-            marketing program allows participants to earn commissions, providing them with a
-            sustainable income while they learn and grow. We strive to create a positive working
-            environment that fosters collaboration, creativity, and mutual support among learners
-            and mentors.
+            At Skill Hub Nepal, we empower individuals through diverse online learning opportunities that build digital skills. Our affiliate program helps learners earn while they grow, creating a sustainable path to success. We promote a positive environment that encourages creativity, collaboration, and mutual support.
           </p>
         </section>
 
         <section className="vision" style={{ marginTop: 16 }}>
           <h2 className="visionHeading">COMPANY VISION</h2>
           <p className="visionBody">
-            At Skill Hub Nepal, our vision is to establish ourselves as a global leader in online
-            earning and affiliate marketing. We aim to create a transformative platform that
-            empowers individuals to enhance their skills and achieve financial independence. Our
-            commitment is to provide resources and support that enable users to succeed in their
-            online endeavors. Through our platform, we seek to foster a community that encourages
-            personal growth and collaboration among members.
+            At Skill Hub Nepal, we aim to become a global leader in online earning and affiliate marketing. Our goal is to empower individuals to build skills, gain financial independence, and succeed in the digital world. 
+            We strive to create a supportive community that promotes growth, learning, and collaboration.
           </p>
         </section>
       </section>
@@ -82,14 +73,8 @@ export default function Page() {
 
           <div className="right">
             <p className="blurb">
-              Manish Thapa Magar, the founder and CEO of Skill Hub Nepal, has instilled a shared
-              vision and strong business ethics within the company. His primary goal is to equip
-              team members with essential digital skills, fostering a belief in the transformative
-              power of education. Under his dedicated leadership, Skill Hub Nepal has positioned
-              itself at the forefront of the education industry in Nepal. The organization has
-              emerged as a beacon of quality education, inspiring hope among countless learners
-              across the country. Through his unwavering commitment, Manish sir has truly made
-              Skill Hub Nepal a symbol of educational excellence and opportunity.
+              Manish Thapa Magar, the founder and CEO of Skill Hub Nepal, leads the company with a clear vision and strong values. His goal is to empower people with essential digital skills and promote the power of education. Under his leadership,
+               Skill Hub Nepal has become a trusted name in quality learning, inspiring learners across Nepal.
             </p>
           </div>
         </div>
