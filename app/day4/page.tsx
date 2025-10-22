@@ -3,15 +3,13 @@ import Link from "next/link";
 export default function Page() {
   return (
     <div className="min-h-screen bg-[#0b0b0f] text-white">
-      <Header />
-
       <main className="mx-auto max-w-6xl px-4">
         {/* Hero */}
         <section className="py-12 text-center md:py-16">
           <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             <span className="text-white">Day 4:</span>{" "}
             <span className="bg-gradient-to-r from-[#a855f7] to-[#7c3aed] bg-clip-text text-transparent">
-             Personal Branding & Content Strategy
+              Personal Branding & Content Strategy
             </span>
           </h1>
           <p className="mt-3 text-sm text-[#d1d1d6] md:text-base">
@@ -26,52 +24,34 @@ export default function Page() {
 
           <div className="mt-4 grid gap-6 md:grid-cols-2">
             <Card>
-              
               <p className="mt-2 text-sm text-[#e9e9ee]">
                 Define your personal brand by identifying your unique values, skills, and
                 passions. Your brand is your story. What makes you stand out?
               </p>
-
-
-            </Card>
-
-            <Card>
-              <h3 className="text-lg font-semibold text-white">
-                Actionable Insights
-              </h3>
-              <p className="mt-2 text-sm text-[#e9e9ee]">
-                Apply these steps to start building your brand today:
-              </p>
-              <ul className="mt-4 space-y-3 text-sm">
-                <Dot>Audit your current online presence.</Dot>
-                <Dot>Optimize your social media profiles.</Dot>
-              </ul>
             </Card>
           </div>
         </section>
 
         {/* Content Creation Tools */}
-        <section className="mt-10">
-          <SectionTitle icon={<ToolboxIcon />}>Content Creation Tools</SectionTitle>
+        <SectionTitle icon={<SparkIcon />}>Building Your Online Identity</SectionTitle>
+        <div className="mt-4 grid gap-6 md:grid-cols-2">
+          <Card>
+            <p className="mt-2 text-sm text-[#e9e9ee]">
+              Optimize social media profiles (Instagram, LinkedIn, YouTube) with professional bios,
+              visuals, and links to your affiliate pages using tools like Linktree.
+            </p>
+          </Card>
+        </div>
 
-          <div className="mt-4 grid gap-6 md:grid-cols-3">
-            <ToolCard
-              icon={<VisualsIcon />}
-              title="Visuals"
-              desc="Canva, Figma, Adobe Spark"
-            />
-            <ToolCard
-              icon={<VideoIcon />}
-              title="Video"
-              desc="InShot, CapCut, DaVinci Resolve"
-            />
-            <ToolCard
-              icon={<WritingIcon />}
-              title="Writing"
-              desc="Grammarly, Hemingway App"
-            />
-          </div>
-        </section>
+        <SectionTitle icon={<SparkIcon />}>Building Your Online Identity</SectionTitle>
+        <div className="mt-4 grid gap-6 md:grid-cols-2">
+          <Card>
+            <p className="mt-2 text-sm text-[#e9e9ee]">
+              Optimize social media profiles (Instagram, LinkedIn, YouTube) with professional bios,
+              visuals, and links to your affiliate pages using tools like Linktree.
+            </p>
+          </Card>
+        </div>
 
         {/* Content Strategy */}
         <section className="mt-10">
@@ -79,8 +59,19 @@ export default function Page() {
 
           <div className="mt-4 rounded-2xl border border-white/[0.06] bg-[#23263a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)] md:p-8">
             <h3 className="text-lg font-semibold text-white">
-              The 3 Pillars of a Winning Content Strategy
+              Develop a 7-day content calendar with educational posts, testimonials,
+              and engaging formats (videos, carousels) to effectively promote Skill Hub Nepal.
             </h3>
+
+            <SectionTitle icon={<SparkIcon />}>Mini-Assignment</SectionTitle>
+            <div className="mt-4 grid gap-6 md:grid-cols-2">
+              <Card>
+                <p className="mt-2 text-sm text-[#e9e9ee]">
+                  Skill Hub Nepal — Create a personal brand profile with a bio, profile picture,
+                  and a promotional post (e.g., video or carousel) to share with your network.
+                </p>
+              </Card>
+            </div>
 
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               <Pillar number="1. Plan" color="from-purple-400 to-fuchsia-500">
@@ -109,51 +100,13 @@ export default function Page() {
               Proceed to Day 5 →
             </button>
           </Link>
-
         </div>
       </main>
     </div>
   );
 }
 
-/* -------------- Layout: Header + Section Title -------------- */
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#0b0b0f]/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link
-          href="/"
-          className="text-lg font-extrabold tracking-tight text-white"
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="/images/srk-logo.png" className="brand" style={{ height: 70 }} />
-          <span style={{ color: "#fff", fontWeight: 700, fontSize: 22 }}>Skill Hub Nepal</span>
-        </div>
-        </Link>
-
-        <nav className="hidden items-center gap-8 text-sm text-[#e5e5e5] md:flex">
-          <NavLink href="#">Home</NavLink>
-         
-          <NavLink href="#">About</NavLink>
-          
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="transition hover:text-white/90"
-    >
-      {children}
-    </Link>
-  );
-}
-
+/* -------------- Section Title -------------- */
 function SectionTitle({
   icon,
   children,
@@ -170,7 +123,6 @@ function SectionTitle({
 }
 
 /* -------------- UI Building Blocks -------------- */
-
 function Card({ children }: { children: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-white/[0.06] bg-[#181a2a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
@@ -240,8 +192,7 @@ function Pillar({
   );
 }
 
-/* -------------- Tiny SVG Icons (no extra deps) -------------- */
-
+/* -------------- Tiny SVG Icons -------------- */
 function SparkIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>

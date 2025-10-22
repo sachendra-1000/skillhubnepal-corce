@@ -4,8 +4,6 @@ import Link from "next/link";
 export default function Page() {
   return (
     <div className="min-h-screen bg-[#0b0b0f] text-white">
-      <Header />
-
       <main className="mx-auto max-w-6xl px-4">
         {/* Progress + Hero */}
         <section className="pt-8 text-center md:pt-12">
@@ -84,34 +82,6 @@ export default function Page() {
       </main>
     </div>
   );
-}
-
-/* ---------------- Layout: Header ---------------- */
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#0b0b0f]/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link href="/" className="text-lg font-extrabold tracking-tight text-white">
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="/images/srk-logo.png" className="brand" style={{ height: 70 }} />
-          <span style={{ color: "#fff", fontWeight: 700, fontSize: 22 }}>Skill Hub Nepal</span>
-        </div>
-        </Link>
-
-        <nav className="hidden items-center gap-8 text-sm text-[#e5e5e5] md:flex">
-          <NavLink href="">Home</NavLink>
-          
-          <NavLink href="#">About</NavLink>
-          
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return <Link href={href} className="transition hover:text-white/90">{children}</Link>;
 }
 
 /* ---------------- Reusable UI ---------------- */

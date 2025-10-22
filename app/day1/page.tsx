@@ -10,18 +10,7 @@ const poppins = Poppins({
 export default function Page() {
   return (
     <main className={`page ${poppins.className}`}>
-       <header className="nav" style={{ height: 90 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="/images/srk-logo.png" className="brand" style={{ height: 70 }} />
-          <span style={{ color: "#fff", fontWeight: 700, fontSize: 22 }}>Skill Hub Nepal</span>
-        </div>
-        <nav className="menu">
-          <a href="#">Home</a>
-          
-          <a href="#">About</a>
-         
-        </nav>
-      </header>
+       
 
       <section className="hero">
         <h1 className="title">
