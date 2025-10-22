@@ -21,8 +21,6 @@ export default function Page() {
         </div>
       </section>
 
-
-
       {/* Our Story */}
       <section className="story">
         <div className="container grid2">
@@ -85,8 +83,8 @@ export default function Page() {
         body {
           margin: 0;
           padding: 0;
-          background: #f5f8fc; /* light page background */
-          color: #0f172a; /* slate-900 */
+          background: #f5f8fc;
+          color: #0f172a;
           font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
             Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
           -webkit-font-smoothing: antialiased;
@@ -102,16 +100,16 @@ export default function Page() {
           --ink: #0f172a;
           --muted: #64748b;
           --border: #e5e7eb;
-          --brand: #2563eb; /* blue */
+          --brand: #2563eb;
           --brand-2: #1d4ed8;
-          --accent: #7c3aed; /* purple underline for active link */
+          --accent: #7c3aed;
           --soft-blue: #eaf2ff;
         }
 
         .page {
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: clamp(16px, 3vw, 24px);
         }
 
         .container {
@@ -121,13 +119,13 @@ export default function Page() {
 
         /* Hero */
         .hero {
-          padding: 64px 0 56px;
-          background: linear-gradient(180deg, #171717 0%, transparent 60%);
+          padding: clamp(40px, 8vw, 80px) 0 clamp(36px, 6vw, 64px);
+          background: linear-gradient(180deg, #f7fbff 0%, transparent 60%);
         }
         .heroTitle {
           margin: 0;
           text-align: center;
-          font-size: clamp(32px, 5.6vw, 64px);
+          font-size: clamp(28px, 6vw, 64px);
           line-height: 1.05;
           font-weight: 900;
           color: var(--ink);
@@ -138,105 +136,24 @@ export default function Page() {
           max-width: 760px;
           text-align: center;
           color: var(--muted);
-          font-size: clamp(14px, 1.5vw, 18px);
+          font-size: clamp(14px, 2.2vw, 18px);
           line-height: 1.7;
-        }
-
-        /* Floating nav (pill) */
-        .navWrap {
-          transform: translateY(-28px); /* float over the divider like screenshot */
-        }
-        .floatingNav {
-          display: grid;
-          grid-template-columns: auto 1fr auto;
-          align-items: center;
-          gap: 16px;
-          background: var(--card);
-          border: 1px solid var(--border);
-          border-radius: 999px;
-          padding: 10px 14px;
-          box-shadow: 0 14px 36px rgba(2, 8, 23, 0.08);
-        }
-        .brand {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding-left: 4px;
-          font-weight: 800;
-          color: var(--brand);
-          white-space: nowrap;
-        }
-        .brand img {
-          height: 26px;
-          width: 26px;
-          object-fit: contain;
-          border-radius: 6px;
-        }
-        .menu {
-          display: flex;
-          justify-content: center;
-          gap: clamp(12px, 4vw, 32px);
-        }
-        .menu a {
-          position: relative;
-          color: #0f172a;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 14px;
-          padding: 8px 6px;
-          opacity: 0.85;
-        }
-        .menu a:hover {
-          opacity: 1;
-        }
-        .menu a.active::after {
-          content: "";
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          bottom: -6px;
-          width: 38px;
-          height: 3px;
-          border-radius: 999px;
-          background: var(--accent);
-        }
-        .actions {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .btn {
-          border: 0;
-          padding: 8px 14px;
-          font-weight: 700;
-          border-radius: 999px;
-          cursor: pointer;
-          font-size: 14px;
-        }
-        .btn.ghost {
-          background: #f1f5f9;
-          color: #0f172a;
-        }
-        .btn.primary {
-          background: linear-gradient(90deg, var(--brand), var(--brand-2));
-          color: #fff;
-          box-shadow: 0 10px 22px rgba(37, 99, 235, 0.25);
         }
 
         /* Our Story */
         .story {
-          padding: 18px 0 56px;
-          background: #fff; /* white section under the pill nav */
+          padding: clamp(18px, 4vw, 24px) 0 clamp(40px, 8vw, 64px);
+          background: #fff;
         }
         .grid2 {
           display: grid;
-          grid-template-columns: 1.1fr 1fr;
-          gap: 28px;
+          grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+          gap: clamp(16px, 4vw, 28px);
           align-items: center;
         }
         .storyText h2 {
           margin: 0 0 10px;
-          font-size: clamp(22px, 3vw, 28px);
+          font-size: clamp(20px, 3.4vw, 28px);
           font-weight: 800;
           color: var(--ink);
         }
@@ -244,17 +161,17 @@ export default function Page() {
           margin: 0;
           color: #334155;
           line-height: 1.75;
-          font-size: 15px;
+          font-size: clamp(14px, 1.6vw, 15.5px);
           max-width: 640px;
         }
         .storyCard {
           background: var(--soft-blue);
           border: 1px solid #dbeafe;
           border-radius: 18px;
-          padding: 18px;
+          padding: clamp(12px, 2.4vw, 18px);
         }
         .storyCardInner {
-          height: clamp(180px, 24vw, 240px);
+          height: clamp(160px, 26vw, 240px);
           border-radius: 14px;
           background: #f1f7ff;
           border: 1px dashed #cbdcfb;
@@ -264,13 +181,13 @@ export default function Page() {
 
         /* Core values */
         .values {
-          padding: 56px 0 90px;
+          padding: clamp(40px, 8vw, 90px) 0;
           background: var(--bg);
         }
         .valuesTitle {
           margin: 0;
           text-align: center;
-          font-size: clamp(22px, 3.4vw, 30px);
+          font-size: clamp(20px, 3.4vw, 30px);
           font-weight: 800;
           color: var(--ink);
         }
@@ -280,18 +197,18 @@ export default function Page() {
           text-align: center;
           color: var(--muted);
           line-height: 1.7;
-          font-size: 15px;
+          font-size: clamp(14px, 1.8vw, 15.5px);
         }
         .valueGrid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 22px;
         }
         .valueCard {
           background: var(--card);
           border: 1px solid var(--border);
           border-radius: 16px;
-          padding: 28px 22px;
+          padding: clamp(20px, 3vw, 28px);
           display: grid;
           place-items: center;
           gap: 12px;
@@ -308,21 +225,20 @@ export default function Page() {
         }
         .valueLabel {
           font-weight: 700;
-          color: #0f172a;
+          color: var(--ink);
+          text-align: center;
         }
 
-        /* Responsive */
+        /* Breakpoints */
         @media (max-width: 980px) {
           .grid2 {
             grid-template-columns: 1fr;
           }
-          .menu {
-            display: none; /* collapse center links on small screens (simpler) */
+          .storyText {
+            text-align: center;
           }
-        }
-        @media (max-width: 720px) {
-          .valueGrid {
-            grid-template-columns: 1fr;
+          .storyText p {
+            margin: 0 auto;
           }
         }
       `}</style>
