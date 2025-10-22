@@ -24,94 +24,31 @@ export default function Page() {
       </section>
 
       <section className="vision">
-        <h2 className="visionHeading">Our Vision</h2>
+        <h2 className="visionHeading">What is Skill Hub Nepal?</h2>
         <p className="visionBody">
-          To empower every Nepali with practical, job-ready skills through accessible and 
-          innovative learning experiences, building a skilled
-          workforce that drives Nepal’s growth, innovation, and global competitiveness.
+          Skill Hub Nepal is revolutionizing the way individuals enhance their professional qualifications by offering a diverse range of upskilling opportunities. As a leading e-commerce platform, Skill Hub Nepal connects learners with high-demand skills that are essential in today’s competitive job market. By focusing on high-paying skill areas, Skill Hub Nepal 
+          empowers individuals to increase their earning potential and advance their careers.
         </p>
       </section>
 
       <section className="benefits">
-        <h3 className="benefitsHeading">Learner Benefits</h3>
+        <h3 className="benefitsHeading">OUR MISSION AND VISION</h3>
 
-        <div className="benefitGrid">
-          <article className="benefitCard">
-            <div className="benefitIcon">
-              {/* Pin icon */}
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <div className="cardTitle">Clarity &amp; Focus</div>
-            <p className="cardDesc">
-              Gain a crystal-clear understanding of the core concepts from day
-              one, setting a strong foundation for the days to come.
-            </p>
-          </article>
+        <section className="vision">
+        <h2 className="visionHeading">COMPANY MISSION</h2>
+        <p className="visionBody">
+          At Skill Hub Nepal, we are dedicated to empowering individuals by offering a wide range of online learning opportunities that enhance digital skills. Our affiliate marketing program allows participants to earn commissions, providing them with a sustainable income while they learn and grow. We strive to create a positive working environment that fosters 
+          collaboration, creativity, and mutual support among learners and mentors.
+        </p>
+      </section>
 
-          <article className="benefitCard">
-            <div className="benefitIcon">
-              {/* Users icon */}
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <div className="cardTitle">Community &amp; Connection</div>
-            <p className="cardDesc">
-              Connect with a community of like‑minded learners, fostering
-              collaboration and shared growth throughout the journey.
-            </p>
-          </article>
-
-          <article className="benefitCard">
-            <div className="benefitIcon">
-              {/* Zap (momentum) icon */}
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-              </svg>
-            </div>
-            <div className="cardTitle">Immediate Momentum</div>
-            <p className="cardDesc">
-              Build immediate momentum and motivation that will propel you
-              through the entire 5‑day course and beyond.
-            </p>
-          </article>
-        </div>
+      <section className="vision">
+        <h2 className="visionHeading">COMPANY VISION</h2>
+        <p className="visionBody">
+          At Skill Hub Nepal, our vision is to establish ourselves as a global leader in online earning and affiliate marketing. We aim to create a transformative platform that empowers individuals to enhance their skills and achieve financial independence. Our commitment is to provide resources and support that enable users to succeed in their online endeavors. Through our platform, we seek 
+          to foster a community that encourages personal growth and collaboration among members.
+        </p>
+      </section>
 
         <a href="/day2">
           <button className="ctaBlue">Proceed to Day 2</button>
