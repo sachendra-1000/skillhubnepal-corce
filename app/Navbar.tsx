@@ -5,12 +5,12 @@ import React from 'react';
 export default function Page() {
   return (
     <>
-      <header className="nav" style={{ height: 90 }}>
+      <header className="nav" style={{ height: 70 }}>
         <div className="brandRow">
           <img
-            src="/images/srk-logo.png"
+            src="/images/skill-logo.png"
             className="brand"
-            alt="SRK logo"
+            alt="Skill logo"
           />
           <span className="brandName">Skill Hub Nepal</span>
         </div>
@@ -39,11 +39,11 @@ export default function Page() {
         .brandRow {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
         }
 
         .brand {
-          height: 70px;
+          height: 100px;
           width: auto;
         }
 

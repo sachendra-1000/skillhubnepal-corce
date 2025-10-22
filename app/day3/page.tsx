@@ -12,10 +12,10 @@ type Row = {
 };
 
 const BASE_ROWS: Row[] = [
-  { name: 'SRK Basic', price: 1500.1, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
-  { name: 'SRK Standard', price: 3000.2, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
-  { name: 'SRK Premium', price: 5000.1, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
-  { name: 'SRK PRO', price: 7000, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
+  { name: 'Explore Package', price: 700, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
+  { name: 'Learn Package', price: 1700, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
+  { name: 'Apply Package', price: 2700, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
+  { name: 'Achieve Package', price: 5200, commissionRs: 0, commissionPct: 0, bonus: 0, wallet: 0 },
 ];
 
 export default function Page() {
@@ -30,7 +30,7 @@ export default function Page() {
   const computeDerived = (price: number, commissionRs: number, commissionPct?: number) => {
     const pct = typeof commissionPct === 'number' ? commissionPct : price ? (commissionRs / price) * 100 : 0;
     const rs = typeof commissionPct === 'number' ? (price * commissionPct) / 100 : commissionRs;
-    const bonus = price * 0.02; // 2% SRK bonus
+    const bonus = price * 0.02; // 2% Skill Hub Nepal bonus
     const wallet = rs + bonus;
     return {
       commissionRs: clamp2(rs),
@@ -68,7 +68,7 @@ export default function Page() {
       'Price (Rs.)',
       'Commission (Rs.)',
       'Commission (%)',
-      'SRK Bonus (Rs.)',
+      'Skill Hub Nepal Bonus (Rs.)',
       'Wallet (Rs.)',
     ];
     const lines = [header.join(',')];
@@ -104,13 +104,13 @@ export default function Page() {
       <section className="card" id="content" aria-labelledby="learnTitle">
         <h3 className="cardTitle" id="learnTitle">Learn While Earning</h3>
         <p className="muted">
-          Blend education with income generation through SRK’s affiliate program, earning commissions by
+          Blend education with income generation through Skill Hub Nepal affiliate program, earning commissions by
           promoting courses while honing your skills.
         </p>
         <div className="imgBox">
           <img
             className="img"
-            src="https://images.unsplash.com/photo-1620799139504-8a50f3b4a518?q=80&w=1200&auto=format&fit=crop"
+            src="/images/affiliate-marketing.jpg"
             alt="Affiliate marketing graphic"
           />
         </div>
@@ -120,7 +120,7 @@ export default function Page() {
       <section className="card" aria-labelledby="whatTitle">
         <h3 className="cardTitle" id="whatTitle">What is Affiliate Marketing?</h3>
         <p className="muted">
-          Earn commissions by promoting SRK courses using a unique referral link. Share via social media, blogs,
+          Earn commissions by promoting Skill Hub Nepal courses using a unique referral link. Share via social media, blogs,
           or websites to drive enrollments and boost your income.
         </p>
         <div className="imgBox">
@@ -137,7 +137,7 @@ export default function Page() {
         <h3 className="cardTitle" id="commissionTitle">Commission Structure</h3>
         <p className="muted">
           Understand our tiered commission structure to maximize earnings. Enter commission values to calculate
-          percentages and track potential income. Use coupon code <b className="hl">SRK30</b> for a 30% discount
+          percentages and track potential income. Use coupon code <b className="hl">skill Hub Nepal 30</b> for a 30% discount
           on all packages (prices below reflect discount).
         </p>
 
@@ -161,7 +161,7 @@ export default function Page() {
                 <th className="th">Price (Rs.)</th>
                 <th className="th">Commission (Rs.)</th>
                 <th className="th">Commission (%)</th>
-                <th className="th">SRK Bonus (Rs.)</th>
+                <th className="th">Skill Hub Nepal Bonus (Rs.)</th>
                 <th className="th right">Wallet (Rs.)</th>
               </tr>
             </thead>
@@ -229,7 +229,7 @@ export default function Page() {
         <div className="imgBox">
           <img
             className="img"
-            src="https://images.unsplash.com/photo-1605901309584-818e25960a8b?q=80&w=1200&auto=format&fit=crop"
+            src="/images/no-refunt.jpg"
             alt="No refund seal"
           />
         </div>
@@ -239,7 +239,7 @@ export default function Page() {
       <section className="card" aria-labelledby="rulesTitle">
         <h3 className="cardTitle" id="rulesTitle">Program Rules</h3>
         <p className="muted">
-          Promote ethically, avoid spamming, and adhere to SRK’s guidelines and legal regulations to ensure
+          Promote ethically, avoid spamming, and adhere to Skill Hub Nepal’s guidelines and legal regulations to ensure
           transparency and authenticity.
         </p>
         <div className="imgBox">

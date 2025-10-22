@@ -97,7 +97,7 @@ export default function Page() {
         <div className="col">
           <h3 className="sectionTitle">Platform Experience</h3>
           <p>Enjoy a user-friendly platform with an intuitive dashboard, featuring course access, progress tracking,
-             payment options, leaderboards, and SRK Bank for a seamless experience.</p>
+             payment options, leaderboards, and Skill Hub Nepal Bank for a seamless experience.</p>
         </div>
       </section>
 
