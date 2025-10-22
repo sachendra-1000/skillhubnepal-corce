@@ -42,7 +42,8 @@ export default function Page() {
         <section className="vision">
           <h2 className="visionHeading">COMPANY MISSION</h2>
           <p className="visionBody">
-            At Skill Hub Nepal, we empower individuals through diverse online learning opportunities that build digital skills. Our affiliate program helps learners earn while they grow, creating a sustainable path to success. We promote a positive environment that encourages creativity, collaboration, and mutual support.
+            At Skill Hub Nepal, we empower individuals through diverse online learning opportunities that build digital skills. Our affiliate program helps learners earn while they grow, creating a sustainable path to success.
+             We promote a positive environment that encourages creativity, collaboration, and mutual support.
           </p>
         </section>
 

@@ -17,7 +17,7 @@ export default function Page() {
 
         <nav className="menu">
           <a href="#">Home</a>
-          <a href="#">About</a>
+          <a href="/about">About</a>
         </nav>
       </header>
 
