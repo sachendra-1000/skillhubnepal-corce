@@ -10,57 +10,117 @@ const poppins = Poppins({
 export default function Page() {
   return (
     <main className={`page ${poppins.className}`}>
-       
-
+      {/* Hero */}
       <section className="hero">
         <h1 className="title">
           <span className="white">Day 1:</span>{" "}
           <span className="highlight">The Foundation</span>
         </h1>
         <p className="subtitle">
-          Welcome to the first step of your transformative learning journey.
-          Today, we lay the groundwork for success.
+          Welcome to the first step of your transformative learning journey. Today, we lay
+          the groundwork for success.
         </p>
       </section>
 
+      {/* What is Skill Hub Nepal */}
       <section className="vision">
         <h2 className="visionHeading">What is Skill Hub Nepal?</h2>
         <p className="visionBody">
-          Skill Hub Nepal is revolutionizing the way individuals enhance their professional qualifications by offering a diverse range of upskilling opportunities. As a leading e-commerce platform, Skill Hub Nepal connects learners with high-demand skills that are essential in today’s competitive job market. By focusing on high-paying skill areas, Skill Hub Nepal 
-          empowers individuals to increase their earning potential and advance their careers.
+          Skill Hub Nepal is revolutionizing the way individuals enhance their professional
+          qualifications by offering a diverse range of upskilling opportunities. As a leading
+          e-commerce platform, Skill Hub Nepal connects learners with high-demand skills that are
+          essential in today’s competitive job market. By focusing on high-paying skill areas,
+          Skill Hub Nepal empowers individuals to increase their earning potential and advance
+          their careers.
         </p>
       </section>
 
+      {/* Mission and Vision */}
       <section className="benefits">
         <h3 className="benefitsHeading">OUR MISSION AND VISION</h3>
 
         <section className="vision">
-        <h2 className="visionHeading">COMPANY MISSION</h2>
-        <p className="visionBody">
-          At Skill Hub Nepal, we are dedicated to empowering individuals by offering a wide range of online learning opportunities that enhance digital skills. Our affiliate marketing program allows participants to earn commissions, providing them with a sustainable income while they learn and grow. We strive to create a positive working environment that fosters 
-          collaboration, creativity, and mutual support among learners and mentors.
-        </p>
+          <h2 className="visionHeading">COMPANY MISSION</h2>
+          <p className="visionBody">
+            At Skill Hub Nepal, we are dedicated to empowering individuals by offering a wide
+            range of online learning opportunities that enhance digital skills. Our affiliate
+            marketing program allows participants to earn commissions, providing them with a
+            sustainable income while they learn and grow. We strive to create a positive working
+            environment that fosters collaboration, creativity, and mutual support among learners
+            and mentors.
+          </p>
+        </section>
+
+        <section className="vision" style={{ marginTop: 16 }}>
+          <h2 className="visionHeading">COMPANY VISION</h2>
+          <p className="visionBody">
+            At Skill Hub Nepal, our vision is to establish ourselves as a global leader in online
+            earning and affiliate marketing. We aim to create a transformative platform that
+            empowers individuals to enhance their skills and achieve financial independence. Our
+            commitment is to provide resources and support that enable users to succeed in their
+            online endeavors. Through our platform, we seek to foster a community that encourages
+            personal growth and collaboration among members.
+          </p>
+        </section>
       </section>
 
-      <section className="vision">
-        <h2 className="visionHeading">COMPANY VISION</h2>
-        <p className="visionBody">
-          At Skill Hub Nepal, our vision is to establish ourselves as a global leader in online earning and affiliate marketing. We aim to create a transformative platform that empowers individuals to enhance their skills and achieve financial independence. Our commitment is to provide resources and support that enable users to succeed in their online endeavors. Through our platform, we seek 
-          to foster a community that encourages personal growth and collaboration among members.
-        </p>
+      {/* Founder section */}
+      <section className="founderCard">
+        <h2 className="founderTitle">MEET OUR FOUNDER</h2>
+
+        <div className="founderContent">
+          <div className="left">
+            <div className="portrait">
+              <img src="/images/founder.jpg" alt="Founder portrait" />
+            </div>
+
+            <div className="tags">
+              <div className="namePlate">Mr. Manish Thapa Magar</div>
+              <div className="rolePlate">Founder & CEO</div>
+            </div>
+          </div>
+
+          <div className="right">
+            <p className="blurb">
+              Manish Thapa Magar, the founder and CEO of Skill Hub Nepal, has instilled a shared
+              vision and strong business ethics within the company. His primary goal is to equip
+              team members with essential digital skills, fostering a belief in the transformative
+              power of education. Under his dedicated leadership, Skill Hub Nepal has positioned
+              itself at the forefront of the education industry in Nepal. The organization has
+              emerged as a beacon of quality education, inspiring hope among countless learners
+              across the country. Through his unwavering commitment, Manish sir has truly made
+              Skill Hub Nepal a symbol of educational excellence and opportunity.
+            </p>
+          </div>
+        </div>
       </section>
 
+      {/* CTA */}
+      <div className="ctaWrap">
         <a href="/day2">
           <button className="ctaBlue">Proceed to Day 2</button>
         </a>
-      </section>
+      </div>
 
+      {/* Global base */}
+      <style jsx global>{`
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          background: #000; /* black */
+          color: #fff;      /* white text */
+        }
+      `}</style>
+
+      {/* Styles */}
       <style jsx>{`
         .page {
-          --bg: #0b0b0f;
+          /* Unified with the "upper" palette */
+          --bg: #000000;   /* black */
+          --text: #ffffff; /* white */
           --panel: #23263a;
           --card: #181a2a;
-          --text: #ffffff;
           --muted: #a1a1aa;
           --accent-start: #a855f7;
           --accent-end: #7c3aed;
@@ -72,56 +132,15 @@ export default function Page() {
           color: var(--text);
           display: flex;
           flex-direction: column;
+          align-items: center;
+          padding: 24px 16px 64px;
+          gap: 24px;
         }
 
-        /* NAV */
-        .nav {
-          max-width: 1200px;
-          margin: 0 auto;
-          width: 100%;
-          padding: 16px 20px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .brand {
-          font-weight: 800;
-          font-size: 18px;
-          color: var(--accent-start);
-        }
-        .menu {
-          display: flex;
-          align-items: center;
-          gap: 26px;
-        }
-        .menu a {
-          color: #e5e5e5;
-          text-decoration: none;
-          font-weight: 500;
-          opacity: 0.9;
-          transition: opacity 0.2s ease;
-        }
-        .menu a:hover {
-          opacity: 1;
-        }
-        .login {
-          margin-left: 6px;
-          padding: 8px 14px;
-          border: 0;
-          border-radius: 8px;
-          color: #fff;
-          font-weight: 700;
-          background: linear-gradient(135deg, var(--blue-start), var(--blue-end));
-          box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
-          cursor: pointer;
-        }
-
-        /* HERO */
+        /* Hero */
         .hero {
           max-width: 1100px;
           width: 100%;
-          margin: 32px auto 0;
-          padding: 0 20px 40px;
           text-align: center;
         }
         .title {
@@ -131,7 +150,7 @@ export default function Page() {
           font-size: clamp(28px, 5vw, 44px);
         }
         .white {
-          color: #fff;
+          color: var(--text);
         }
         .highlight {
           background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
@@ -147,14 +166,10 @@ export default function Page() {
           max-width: 720px;
         }
 
-        /* VISION PANEL */
+        /* Vision panel */
         .vision {
           max-width: 1100px;
           width: 100%;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
-        .vision {
           background: var(--panel);
           border: 1px solid rgba(255, 255, 255, 0.06);
           border-radius: 10px;
@@ -180,16 +195,14 @@ export default function Page() {
           line-height: 1.6;
         }
 
-        /* BENEFITS */
+        /* Mission/Vision container */
         .benefits {
           max-width: 1100px;
           width: 100%;
-          margin: 36px auto 80px;
-          padding: 0 20px;
           text-align: center;
         }
         .benefitsHeading {
-          margin: 6px 0 22px;
+          margin: 6px 0 12px;
           font-weight: 800;
           font-size: 20px;
           background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
@@ -197,46 +210,103 @@ export default function Page() {
           background-clip: text;
           color: transparent;
         }
-        .benefitGrid {
+
+        /* Founder card */
+        .founderCard {
+          width: clamp(320px, 94vw, 1100px);
+          border-radius: 14px;
+          background: #0d2fe0; /* royal blue */
+          border: 4px solid #ffffff;
+          padding: 22px 20px 26px;
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+        }
+        .founderTitle {
+          margin: 6px 0 14px;
+          text-align: center;
+          color: #ffeb3b;
+          font-size: clamp(26px, 4.6vw, 48px);
+          font-weight: 900;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          text-decoration-line: underline;
+          text-decoration-color: #ffffff;
+          text-underline-offset: 6px;
+          text-decoration-thickness: 3px;
+        }
+        .founderContent {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 22px;
-          margin-bottom: 26px;
+          grid-template-columns: 320px 1fr;
+          gap: 24px;
+          align-items: center;
         }
-        .benefitCard {
-          position: relative;
-          background: var(--card);
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          border-radius: 12px;
-          padding: 28px 22px 22px;
-          text-align: left;
-          box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04),
-            0 14px 30px rgba(0, 0, 0, 0.45);
+        .left {
+          display: grid;
+          justify-items: center;
+          gap: 14px;
         }
-        .benefitIcon {
-          width: 44px;
-          height: 44px;
+        .portrait {
+          width: clamp(180px, 26vw, 280px);
+          height: clamp(180px, 26vw, 280px);
           border-radius: 999px;
+          overflow: hidden;
+          border: 10px solid #ffeb3b;
+          background: #0b0b0b;
+          box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
+        }
+        .portrait img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%);
+        }
+        .tags {
+          display: grid;
+          gap: 8px;
+          width: 100%;
+          justify-items: start;
+        }
+        .namePlate {
+          display: inline-block;
+          background: #0b0b0b;
+          color: #ffeb3b;
+          font-weight: 800;
+          padding: 8px 14px;
+          border-radius: 6px;
+          border: 2px solid #ffeb3b;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+        }
+        .rolePlate {
+          display: inline-block;
+          background: #ffeb3b;
+          color: #000;
+          font-weight: 900;
+          padding: 8px 14px;
+          border-radius: 8px;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+        }
+        .right {
           display: grid;
           place-items: center;
-          margin: 0 0 14px;
-          background: linear-gradient(180deg, #c084fc, #7c3aed);
-          box-shadow: 0 10px 22px rgba(124, 58, 237, 0.35);
         }
-        .cardTitle {
-          color: #fff;
-          font-weight: 800;
-          margin-bottom: 8px;
-        }
-        .cardDesc {
-          color: var(--muted);
-          font-size: 13px;
-          line-height: 1.6;
+        .blurb {
+          color: #ffffff;
+          font-size: clamp(14px, 1.55vw, 20px);
+          line-height: 1.8;
+          font-weight: 700;
+          text-align: center;
+          max-width: 760px;
+          text-decoration-line: underline;
+          text-decoration-color: #ffffff;
+          text-underline-offset: 6px;
+          text-decoration-thickness: 2px;
         }
 
+        /* CTA */
+        .ctaWrap {
+          margin-top: 18px;
+        }
         .ctaBlue {
           display: inline-block;
-          margin-top: 6px;
           padding: 12px 22px;
           border-radius: 999px;
           border: 0;
@@ -247,21 +317,10 @@ export default function Page() {
           cursor: pointer;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-          .benefitGrid {
-            grid-template-columns: 1fr 1fr;
-          }
-        }
-        @media (max-width: 640px) {
-          .menu a:nth-child(-n + 3) {
-            display: none;
-          }
-          .benefitGrid {
+        @media (max-width: 860px) {
+          .founderContent {
             grid-template-columns: 1fr;
-          }
-          .title {
-            font-size: 32px;
+            gap: 18px;
           }
         }
       `}</style>
