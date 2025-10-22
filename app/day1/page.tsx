@@ -215,7 +215,7 @@ export default function Page() {
         .founderCard {
           width: clamp(320px, 94vw, 1100px);
           border-radius: 14px;
-          background: #0d2fe0; /* royal blue */
+          
           border: 4px solid #ffffff;
           padding: 22px 20px 26px;
           box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
@@ -295,10 +295,8 @@ export default function Page() {
           font-weight: 700;
           text-align: center;
           max-width: 760px;
-          text-decoration-line: underline;
-          text-decoration-color: #ffffff;
-          text-underline-offset: 6px;
-          text-decoration-thickness: 2px;
+          
+         
         }
 
         /* CTA */
