@@ -92,6 +92,9 @@ export default function Page() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          background: transparent;
+          backdrop-filter: blur(10px);
+          transition: all 0.3s ease;
         }
         .brand {
           font-weight: 800;
