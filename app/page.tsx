@@ -10,8 +10,16 @@ const poppins = Poppins({
 export default function Page() {
   return (
     <main className={`page ${poppins.className}`}>
-      
-      
+      <header className="nav" style={{ height: 90 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <img src="/images/srk-logo.png" className="brand" style={{ height: 70 }} />
+          <span style={{ color: "#fff", fontWeight: 700, fontSize: 22 }}>Skill Hub Nepal</span>
+        </div>
+        <nav className="menu">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+        </nav>
+      </header>
 
       <section className="hero">
         <h1 className="title">
@@ -67,20 +75,33 @@ export default function Page() {
 
       <style jsx>{`
         .page {
-          --bg: #0b0b0f;
-          --card: #181a2a;
+          --bg: #0a0a0f;
+          --card: #1a1d2e;
           --text: #ffffff;
-          --muted: #a1a1aa;
-          --accent-start: #a855f7;
-          --accent-end: #7c3aed;
-          --blue-start: #3b82f6;
-          --blue-end: #2563eb;
+          --muted: #94a3b8;
+          --accent-start: #06b6d4;
+          --accent-end: #0891b2;
+          --secondary-start: #10b981;
+          --secondary-end: #059669;
 
           min-height: 100dvh;
-          background: var(--bg);
+          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
           color: var(--text);
           display: flex;
           flex-direction: column;
+          position: relative;
+        }
+        .page::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+          pointer-events: none;
+          z-index: 0;
         }
 
         /* NAV */
@@ -92,9 +113,12 @@ export default function Page() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          background: transparent;
-          backdrop-filter: blur(10px);
+          background: rgba(26, 29, 46, 0.4);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
           transition: all 0.3s ease;
+          position: relative;
+          z-index: 10;
         }
         .brand {
           font-weight: 800;
@@ -112,10 +136,15 @@ export default function Page() {
           text-decoration: none;
           font-weight: 500;
           opacity: 0.9;
-          transition: opacity 0.2s ease;
+          transition: all 0.3s ease;
+          padding: 8px 16px;
+          border-radius: 8px;
+          position: relative;
         }
         .menu a:hover {
           opacity: 1;
+          background: rgba(6, 182, 212, 0.1);
+          color: var(--accent-start);
         }
         .login {
           margin-left: 6px;
@@ -133,53 +162,59 @@ export default function Page() {
         .hero {
           max-width: 1100px;
           width: 100%;
-          margin: 28px auto 0;
+          margin: 60px auto 0;
           padding: 0 20px 70px;
           text-align: center;
+          position: relative;
+          z-index: 1;
         }
         .title {
           margin: 34px 0 10px;
           font-weight: 800;
-          line-height: 1.15;
-          font-size: clamp(28px, 5vw, 44px);
+          line-height: 1.2;
+          font-size: clamp(32px, 6vw, 56px);
+          letter-spacing: -0.02em;
         }
         .welcome {
           color: #ffffff;
         }
         .highlight {
-          background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
+          display: inline-block;
         }
         .subtitle {
-          margin: 10px auto 26px;
+          margin: 20px auto 40px;
           color: var(--muted);
-          font-size: 14px;
+          font-size: 16px;
           max-width: 650px;
+          line-height: 1.6;
         }
 
         /* DAY 1 CIRCLE */
         .day-one {
-          width: 120px;
-          height: 120px;
-          margin: 28px auto 30px;
+          width: 140px;
+          height: 140px;
+          margin: 40px auto 50px;
           border-radius: 999px;
           display: grid;
           place-items: center;
           font-weight: 800;
-          font-size: 20px;
+          font-size: 24px;
           color: #fff;
-          background: radial-gradient(
-              75% 75% at 30% 25%,
-              #c4b5fd 0%,
-              #a78bfa 35%,
-              #8b5cf6 60%,
-              #6d28d9 100%
-            )
-            no-repeat;
-          box-shadow: 0 12px 28px rgba(139, 92, 246, 0.45),
-            inset 0 -10px 18px rgba(0, 0, 0, 0.35);
+          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
+          box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3),
+            0 0 60px rgba(16, 185, 129, 0.2),
+            inset 0 -8px 16px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        .day-one:hover {
+          transform: translateY(-4px) scale(1.05);
+          box-shadow: 0 25px 50px rgba(6, 182, 212, 0.4),
+            0 0 80px rgba(16, 185, 129, 0.3);
         }
 
         /* CARDS */
@@ -192,34 +227,44 @@ export default function Page() {
         }
         .card {
           position: relative;
-          background: var(--card);
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04),
-            0 14px 30px rgba(0, 0, 0, 0.45);
-          border-radius: 12px;
+          background: rgba(26, 29, 46, 0.6);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+            0 10px 30px rgba(0, 0, 0, 0.3);
+          border-radius: 16px;
           padding: 28px 20px 24px;
           text-align: center;
           min-height: 140px;
+          backdrop-filter: blur(10px);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        .card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(6, 182, 212, 0.3);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15),
+            0 20px 40px rgba(6, 182, 212, 0.2);
         }
         .badge {
           position: absolute;
-          top: -18px;
+          top: -20px;
           left: 50%;
           transform: translateX(-50%);
-          width: 52px;
-          height: 52px;
+          width: 56px;
+          height: 56px;
           border-radius: 999px;
           display: grid;
           place-items: center;
           font-weight: 800;
-          background: linear-gradient(
-            180deg,
-            #60a5fa 0%,
-            #3b82f6 45%,
-            #7c3aed 100%
-          );
+          font-size: 18px;
+          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
           color: #ffffff;
-          box-shadow: 0 10px 22px rgba(59, 130, 246, 0.35);
+          box-shadow: 0 12px 24px rgba(6, 182, 212, 0.4);
+          transition: all 0.3s ease;
+        }
+        .card:hover .badge {
+          transform: translateX(-50%) scale(1.1);
+          box-shadow: 0 16px 32px rgba(6, 182, 212, 0.5);
         }
         .card-title {
           margin-top: 32px;
@@ -234,15 +279,23 @@ export default function Page() {
 
         /* CTA */
         .cta {
-          margin-top: 10px;
-          padding: 12px 22px;
+          display: inline-block;
+          margin-top: 20px;
+          padding: 16px 40px;
           border-radius: 999px;
           border: 0;
-          font-weight: 800;
+          font-weight: 700;
+          font-size: 16px;
           color: #fff;
-          background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-          box-shadow: 0 10px 26px rgba(124, 58, 237, 0.45);
+          text-decoration: none;
+          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
+          box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
           cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 15px 40px rgba(6, 182, 212, 0.5);
         }
 
         /* Responsive */
