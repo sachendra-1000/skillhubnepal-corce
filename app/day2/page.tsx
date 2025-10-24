@@ -7,7 +7,7 @@ type Quote = { text: string; emoji?: string };
 type Course = { title: string; badge?: string; points: string[]; comingSoon?: boolean };
 
 const REG_NUMBER = '372758';
-const CERT_IMG = '/certificate.jpg'; // used for both display and palette
+const CERT_IMG = '/certificate.jpg'; // used to tint the theme
 
 const QUOTES: Quote[] = [
   { text: 'आत्मविश्वास छैन जस्तो लागे पनि सुरु त गर, कदमले नै दिशा खोल्छ।', emoji: '✨' },
@@ -80,6 +80,33 @@ function hexToRgba(hex: string, alpha: number) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
+/* Average color from an image (browser-only, no external deps) */
+function getAverageColor(url: string): Promise<number[]> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = url;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const w = 20, h = 20; // small sample for speed
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return resolve([24, 24, 24]);
+      ctx.drawImage(img, 0, 0, w, h);
+      const { data } = ctx.getImageData(0, 0, w, h);
+      let r = 0, g = 0, b = 0, count = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        r += data[i];
+        g += data[i + 1];
+        b += data[i + 2];
+        count++;
+      }
+      resolve([r / count, g / count, b / count]);
+    };
+    img.onerror = () => resolve([24, 24, 24]);
+  });
+}
+
 export default function Page() {
   const [theme, setTheme] = useState({
     bg: '#000000',
@@ -96,25 +123,14 @@ export default function Page() {
     let mounted = true;
     (async () => {
       try {
-        const Vibrant: any = (await import('node-vibrant')) // correct import
-        const palette = await Vibrant.from(CERT_IMG).getPalette();
+        if (typeof window === 'undefined') return;
 
-        const bgRGB =
-          palette.DarkMuted?.rgb ||
-          palette.DarkVibrant?.rgb ||
-          palette.Muted?.rgb ||
-          palette.Vibrant?.rgb;
+        // Get average image color and build a nice dark UI around it
+        const avg = await getAverageColor(CERT_IMG);
+        const avgHex = rgbToHex(avg);
 
-        const accentRGB =
-          palette.Vibrant?.rgb ||
-          palette.LightVibrant?.rgb ||
-          palette.Muted?.rgb ||
-          palette.DarkVibrant?.rgb;
-
-        if (!bgRGB || !accentRGB) return;
-
-        const bg = rgbToHex(bgRGB);
-        const accent = rgbToHex(accentRGB);
+        const bg = mixHex('#000000', avgHex, 0.25); // tint dark background
+        const accent = mixHex('#a855f7', avgHex, 0.5); // blend with a vivid fallback
         const text = bestTextFor(bg);
 
         const card = mixHex(bg, text === '#ffffff' ? '#ffffff' : '#000000', 0.08);
@@ -126,7 +142,7 @@ export default function Page() {
           bg,
           text,
           accent,
-          primary: accent, // everything (buttons) uses this, so it matches the image
+          primary: accent,
           card,
           panel,
           muted,
@@ -158,10 +174,23 @@ export default function Page() {
       }
     >
       <a href="#content" className="skip">Skip to content</a>
-      {/* Nav removed */}
       <Hero />
 
+      <section id="courses" className="section" aria-labelledby="courses-title">
+        <Header
+          title="Courses"
+          subtitle="Project-based sessions designed to get you building fast."
+          badge="New"
+        />
+        <div className="grid" role="list">
+          {COURSES.map((c, i) => (
+            <CourseCard key={i} {...c} />
+          ))}
+        </div>
+      </section>
+
       <section id="legal" className="section" aria-labelledby="legal-title">
+        <h2 id="legal-title" className="srOnly">Legal Information</h2>
         <div className="legalWrap">
           <div className="legalText">
             <p>
@@ -244,30 +273,43 @@ export default function Page() {
           --primary: #3b82f6;
           --ring: rgba(168, 85, 247, 0.6);
         }
+
+        /* Base + mobile-first */
+        *, *::before, *::after { box-sizing: border-box; }
+        img { max-width: 100%; height: auto; display: block; }
+
         html, body, .page { background: var(--bg); color: var(--text); }
-        .page { display: flex; flex-direction: column; min-height: 100dvh; }
+        .page {
+          display: flex; flex-direction: column; min-height: 100dvh;
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .srOnly {
+          position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+          overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+
         .skip {
-          position: absolute;
-          left: -9999px;
-          top: auto;
-          width: 1px;
-          height: 1px;
-          overflow: hidden;
+          position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
         }
         .skip:focus {
-          left: 12px;
-          top: 12px;
-          width: auto;
-          height: auto;
-          padding: 8px 12px;
-          background: var(--panel);
-          border-radius: 8px;
-          outline: 2px solid var(--accent);
+          left: 12px; top: 12px; width: auto; height: auto; padding: 8px 12px;
+          background: var(--panel); border-radius: 8px; outline: 2px solid var(--accent);
         }
-        .section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 72px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+
+        .section {
+          width: 100%;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 24px);
+        }
+
+        /* Responsive grid */
+        .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(14px, 3.2vw, 20px); }
         .grid > * { grid-column: span 12; }
-        @media (min-width: 860px) { .grid > * { grid-column: span 6; } }
+        @media (min-width: 640px) { .grid > * { grid-column: span 6; } }
+        @media (min-width: 1024px) { .grid > * { grid-column: span 4; } }
+
         .btn {
           background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary), #000 15%));
           color: #ffffff; border: none; padding: 12px 18px; border-radius: 12px;
@@ -277,6 +319,7 @@ export default function Page() {
         }
         .btn:hover { transform: translateY(-2px); }
         .btn:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+        @media (max-width: 480px) { .btn { width: 100%; justify-content: center; } }
 
         /* Primary pill used for Proceed to Day 3 – matches image color */
         .btnPrimary {
@@ -293,42 +336,63 @@ export default function Page() {
         .btnPrimary:hover { transform: translateY(-2px); }
         .btnPrimary:active { transform: translateY(-1px) scale(0.99); }
         .btnPrimary:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+        @media (max-width: 520px) { .btnPrimary { width: 100%; justify-content: center; } }
 
         .pill {
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
           background: var(--panel); color: var(--text); padding: 8px 12px; border-radius: 999px; cursor: pointer;
         }
         .pill:hover { border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring); }
+        @media (max-width: 520px) { .pill { padding: 10px 14px; } }
+
+        /* Quote rotator */
         .quoteCard {
           display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
           background: var(--card);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
-          border-radius: 16px; padding: 22px;
+          border-radius: 16px; padding: clamp(16px, 3.6vw, 22px);
         }
-        blockquote { margin: 0; font-size: 1.15rem; line-height: 1.6; }
+        blockquote { margin: 0; font-size: clamp(1rem, 2.5vw, 1.15rem); line-height: 1.6; }
         .emoji { opacity: 0.9; margin-left: 8px; }
         .dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
         .dot {
-          width: 8px; height: 8px; border-radius: 50%;
+          width: 10px; height: 10px; border-radius: 50%;
           background: color-mix(in srgb, var(--text), transparent 94%); border: none; cursor: pointer;
         }
         .dot.active { background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent), #000 20%)); }
-        .legalWrap { display: grid; grid-template-columns: 1fr; gap: 24px; }
-        @media (min-width: 960px) { .legalWrap { grid-template-columns: 1.2fr 1fr; align-items: start; } }
+
+        /* Stack quote content on very small screens */
+        @media (max-width: 520px) {
+          .quoteCard { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+          .quoteCard .pill { flex: 0 0 auto; }
+          .quoteCard blockquote { flex: 1 1 100%; order: 2; }
+        }
+
+        .legalWrap { display: grid; grid-template-columns: 1fr; gap: clamp(16px, 3vw, 24px); }
+        @media (min-width: 700px) { .legalWrap { grid-template-columns: 1.1fr 1fr; align-items: start; } }
+
         .legalText {
           background: var(--card);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
-          border-radius: 16px; padding: 24px;
+          border-radius: 16px; padding: clamp(18px, 3.5vw, 24px);
         }
+
         .certificate {
           background: var(--panel);
           border: 1px dashed color-mix(in srgb, var(--text), transparent 94%);
-          border-radius: 16px; padding: 14px; text-align: center;
+          border-radius: 16px; padding: clamp(10px, 2.5vw, 14px); text-align: center;
         }
         .certificate :global(img) { width: 100%; height: auto; object-fit: contain; border-radius: 10px; }
+        .certificate .portrait { max-width: 560px; margin: 0 auto; }
         .certificate small { display: block; margin-top: 8px; color: var(--muted); }
+
         .bullets { margin: 14px 0 20px; padding-left: 18px; color: var(--muted); }
         .bullets li { margin: 6px 0; }
+
+        /* Motion preference */
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
       `}</style>
     </main>
   );
@@ -354,13 +418,17 @@ function Hero() {
       </div>
 
       <style jsx>{`
-        .hero { width: 100%; padding: 80px 20px 40px; display: grid; place-items: center; text-align: center; }
-        .inner { max-width: 900px; }
+        .hero {
+          width: 100%;
+          padding: clamp(56px, 10vw, 100px) clamp(16px, 5vw, 24px) clamp(28px, 6vw, 40px);
+          display: grid; place-items: center; text-align: center;
+        }
+        .inner { width: 100%; max-width: 900px; }
         .badge {
           display: inline-block; padding: 6px 12px; border-radius: 999px; background: var(--card);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%); color: var(--muted); margin-bottom: 16px;
         }
-        h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); margin: 0 0 10px; font-weight: 900; letter-spacing: -0.02em; }
+        h1 { font-size: clamp(1.9rem, 5.2vw, 3.2rem); margin: 0 0 10px; font-weight: 900; letter-spacing: -0.02em; }
         h1 span {
           background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent), #000 20%));
           -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -385,12 +453,12 @@ function Header({ title, subtitle, badge }: { title: string; subtitle?: string; 
         {subtitle && <p className="sub">{subtitle}</p>}
       </div>
       <style jsx>{`
-        .head { margin-bottom: 22px; }
+        .head { margin-bottom: clamp(16px, 3vw, 22px); }
         .tag {
           display: inline-block; margin-bottom: 8px; background: var(--panel); color: var(--accent);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%); padding: 6px 10px; border-radius: 999px; font-weight: 700; letter-spacing: 0.2px;
         }
-        h2 { margin: 0 0 6px; font-size: clamp(1.4rem, 3vw, 2rem); }
+        h2 { margin: 0 0 6px; font-size: clamp(1.25rem, 3.2vw, 2rem); }
         .sub { margin: 0; color: var(--muted); max-width: 800px; }
       `}</style>
     </div>
@@ -403,6 +471,7 @@ function CourseCard({ title, badge, points, comingSoon }: Course) {
       <header className="top">
         <h3>{title}</h3>
         {badge && <span className="badge">{badge}</span>}
+        {comingSoon && <span className="badge">Coming soon</span>}
       </header>
       <ul>
         {points.map((p, i) => (
@@ -414,11 +483,12 @@ function CourseCard({ title, badge, points, comingSoon }: Course) {
         .card {
           background: var(--card);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
-          border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 10px; min-height: 260px;
+          border-radius: 16px; padding: clamp(16px, 3vw, 20px);
+          display: flex; flex-direction: column; gap: 10px; min-height: 260px;
         }
         .muted { opacity: 0.85; }
-        .top { display: flex; justify-content: space-between; align-items: center; }
-        h3 { margin: 0; font-size: 1.15rem; }
+        .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+        h3 { margin: 0; font-size: clamp(1rem, 2.6vw, 1.15rem); }
         .badge {
           padding: 6px 10px; border-radius: 999px; background: var(--panel); color: var(--muted);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%); font-size: 0.85rem;
@@ -449,10 +519,10 @@ function SessionCard({ day, title, highlights, quote }: { day: number; title: st
         .session {
           background: linear-gradient(180deg, color-mix(in srgb, var(--accent), transparent 93%), transparent), var(--card);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
-          border-radius: 16px; padding: 20px;
+          border-radius: 16px; padding: clamp(16px, 3vw, 20px);
         }
-        .row { display: flex; justify-content: space-between; align-items: baseline; }
-        h3 { margin: 0; font-size: 1.15rem; }
+        .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+        h3 { margin: 0; font-size: clamp(1rem, 2.6vw, 1.15rem); }
         .badge {
           padding: 6px 10px; border-radius: 999px; background: var(--panel); color: var(--muted);
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%); font-size: 0.85rem;
@@ -471,6 +541,12 @@ function QuotesRotator() {
   const [qIndex, setQIndex] = useState(0);
 
   useEffect(() => {
+    const prefersReduced = typeof window !== 'undefined'
+      ? window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+      : false;
+
+    if (prefersReduced) return;
+
     const id = setInterval(() => setQIndex((i) => (i + 1) % QUOTES.length), 6000);
     return () => clearInterval(id);
   }, []);
@@ -482,7 +558,7 @@ function QuotesRotator() {
         <blockquote><p>“{QUOTES[qIndex].text}” <span className="emoji">{QUOTES[qIndex].emoji}</span></p></blockquote>
         <button aria-label="Next quote" className="pill" onClick={() => setQIndex((i) => (i + 1) % QUOTES.length)}>→</button>
       </div>
-      <div className="dots">
+      <div className="dots" role="group" aria-label="Quote pagination">
         {QUOTES.map((_, i) => (
           <button key={i} aria-label={`Go to quote ${i + 1}`} className={`dot ${i === qIndex ? 'active' : ''}`} onClick={() => setQIndex(i)} />
         ))}
@@ -509,16 +585,11 @@ function CTA() {
             color-mix(in srgb, var(--accent), transparent 92%),
             color-mix(in srgb, var(--accent), transparent 88%));
           border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
-          padding: 28px; border-radius: 16px; text-align: center; max-width: 900px; margin: 0 auto;
+          padding: clamp(20px, 3.6vw, 28px); border-radius: 16px; text-align: center; max-width: 900px; margin: 0 auto;
         }
-        h3 { margin: 0 0 8px; font-size: 1.4rem; }
+        h3 { margin: 0 0 8px; font-size: clamp(1.15rem, 2.8vw, 1.4rem); }
         p { margin: 0 0 14px; color: color-mix(in srgb, var(--text), transparent 10%); }
-        .stack { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .ghost {
-          padding: 12px 18px; border-radius: 12px; color: var(--text); text-decoration: none;
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%); background: var(--panel);
-        }
-        .ghost:hover { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent), transparent 80%); }
+        .stack { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; width: 100%; }
       `}</style>
     </section>
   );
@@ -533,7 +604,14 @@ function Footer() {
       </div>
       <style jsx>{`
         .foot { margin-top: auto; border-top: 1px solid color-mix(in srgb, var(--text), transparent 95%); padding: 18px 20px; }
-        .wrap { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; color: var(--muted); font-size: 0.95rem; }
+        .wrap {
+          max-width: 1100px; margin: 0 auto;
+          display: flex; justify-content: space-between; align-items: center;
+          color: var(--muted); font-size: 0.95rem; gap: 8px;
+        }
+        @media (max-width: 560px) {
+          .wrap { flex-direction: column; gap: 6px; text-align: center; }
+        }
       `}</style>
     </footer>
   );
