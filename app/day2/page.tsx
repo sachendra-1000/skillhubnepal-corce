@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -159,27 +158,10 @@ export default function Page() {
       }
     >
       <a href="#content" className="skip">Skip to content</a>
-      <Nav />
+      {/* Nav removed */}
       <Hero />
 
-      <section id="courses" className="section" aria-labelledby="courses-title">
-        <Header
-          title="Courses"
-          subtitle="Start with Web Development and explore more tracks soon."
-        />
-        <div className="grid" role="list">
-          {COURSES.map((c, i) => (
-            <CourseCard key={i} {...c} />
-          ))}
-        </div>
-      </section>
-
       <section id="legal" className="section" aria-labelledby="legal-title">
-        <Header
-          title="We are a legal platform"
-          subtitle={`Skill Hub Nepal is officially registered. Registration No: ${REG_NUMBER}.`}
-          badge="Legal"
-        />
         <div className="legalWrap">
           <div className="legalText">
             <p>
@@ -352,44 +334,6 @@ export default function Page() {
   );
 }
 
-function Nav() {
-  return (
-    <header className="nav" role="banner">
-      <div className="wrap">
-        <Link href="/" className="brand" aria-label="Go to home">
-          <span className="logo" aria-hidden>⬢</span> Skill Hub Nepal
-        </Link>
-        <nav aria-label="Primary">
-          <a href="#courses">Courses</a>
-          <a href="#legal">Legal</a>
-          <a href="#sessions">Sessions</a>
-          <a href="#quotes">Quotes</a>
-          <a href="#enroll" className="enroll">Enroll</a>
-        </nav>
-      </div>
-      <style jsx>{`
-        .nav {
-          position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px);
-          background: linear-gradient(180deg, color-mix(in srgb, var(--bg), transparent 15%), color-mix(in srgb, var(--bg), transparent 55%));
-          border-bottom: 1px solid color-mix(in srgb, var(--text), transparent 96%);
-        }
-        .wrap {
-          margin: 0 auto; max-width: 1100px; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;
-        }
-        .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 800; letter-spacing: 0.2px; }
-        .logo { color: var(--accent); filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--accent), transparent 50%)); }
-        nav { display: flex; gap: 18px; align-items: center; }
-        nav a { color: color-mix(in srgb, var(--text), transparent 20%); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-        .enroll {
-          padding: 8px 12px; border-radius: 10px; background: var(--card);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
-        }
-        .enroll:hover { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent), transparent 80%); }
-      `}</style>
-    </header>
-  );
-}
-
 function Hero() {
   return (
     <section className="hero" id="content">
@@ -557,7 +501,6 @@ function CTA() {
           <Link href="/day3" className="btnPrimary" aria-label="Proceed to Day 3">
             Proceed to Day 3
           </Link>
-          
         </div>
       </div>
       <style jsx>{`
