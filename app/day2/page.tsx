@@ -196,9 +196,24 @@ export default function Page() {
         html,
         body,
         .page {
+<<<<<<< HEAD
           background: radial-gradient(1200px 600px at 10% -10%, rgba(167, 139, 250, 0.18), transparent),
             radial-gradient(1200px 600px at 100% 0%, rgba(34, 211, 238, 0.16), transparent),
             var(--bg);
+=======
+          --bg: #000000;
+          --card: #181a2a;
+          --panel: #23263a;
+          --text: #ffffff;
+          --muted: #a1a1aa;
+          --accent-start: #a855f7;
+          --accent-end: #7c3aed;
+          --blue-start: #3b82f6;
+          --blue-end: #2563eb;
+
+          min-height: 100dvh;
+          background: var(--bg);
+>>>>>>> 0ae98ced6acb9c9e065c6d36be2e2d48d3928f97
           color: var(--text);
         }
         .page {
