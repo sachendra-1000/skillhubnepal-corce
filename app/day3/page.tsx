@@ -261,7 +261,7 @@ export default function Page() {
       <style jsx global>{`
         :root {
           /* Colors */
-          --bg: #0b0b0f;
+          --bg: #000000;
           --panel: #23263a;
           --panel-2: #181a2a;
           --border: rgba(255, 255, 255, 0.06);

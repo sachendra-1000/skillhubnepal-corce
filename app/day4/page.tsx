@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#0b0b0f] text-white">
+    <div className="min-h-screen bg-[#000] text-white">
       <main className="mx-auto max-w-6xl px-4">
         {/* Hero */}
         <section className="py-12 text-center md:py-16">

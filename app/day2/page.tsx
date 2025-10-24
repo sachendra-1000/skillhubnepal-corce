@@ -109,7 +109,7 @@ export default function Page() {
 
       <style jsx>{`
         .page {
-          --bg: #0b0b0f;
+          --bg: #000000;
           --card: #181a2a;
           --panel: #23263a;
           --text: #ffffff;
