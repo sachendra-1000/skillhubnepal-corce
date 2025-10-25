@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import type { CSSProperties } from 'react';
 
 type Quote = { text: string; emoji?: string };
 type Course = { title: string; badge?: string; points: string[]; comingSoon?: boolean };
@@ -135,7 +136,10 @@ export default function Page() {
 
         const card = mixHex(bg, text === '#ffffff' ? '#ffffff' : '#000000', 0.08);
         const panel = mixHex(bg, text === '#ffffff' ? '#ffffff' : '#000000', 0.12);
-        const muted = text === '#ffffff' ? mixHex('#ffffff', accent, 0.3) : mixHex('#000000', accent, 0.6);
+        const muted =
+          text === '#ffffff'
+            ? mixHex('#ffffff', accent, 0.3)
+            : mixHex('#000000', accent, 0.6);
 
         if (!mounted) return;
         setTheme({
@@ -157,22 +161,33 @@ export default function Page() {
     };
   }, []);
 
+  // Derived CSS variables (safe in styled-jsx, no color-mix())
+  const cssVars = {
+    '--bg': theme.bg,
+    '--text': theme.text,
+    '--accent': theme.accent,
+    '--primary': theme.primary,
+    '--card': theme.card,
+    '--panel': theme.panel,
+    '--muted': theme.muted,
+    '--ring': theme.ring,
+
+    // Replacements for color-mix() usage
+    '--border-weak': hexToRgba(theme.text, 0.06),
+    '--text-soft': hexToRgba(theme.text, 0.9),
+    '--shadow-primary-40': hexToRgba(theme.primary, 0.4),
+    '--accent-alpha-07': hexToRgba(theme.accent, 0.07),
+    '--accent-alpha-12': hexToRgba(theme.accent, 0.12),
+
+    '--primary-dark-15': mixHex(theme.primary, '#000000', 0.15),
+    '--primary-dark-25': mixHex(theme.primary, '#000000', 0.25),
+    '--primary-dark-45': mixHex(theme.primary, '#000000', 0.45),
+
+    '--accent-dark-20': mixHex(theme.accent, '#000000', 0.2),
+  } as CSSProperties;
+
   return (
-    <main
-      className="page"
-      style={
-        {
-          ['--bg' as any]: theme.bg,
-          ['--text' as any]: theme.text,
-          ['--accent' as any]: theme.accent,
-          ['--primary' as any]: theme.primary,
-          ['--card' as any]: theme.card,
-          ['--panel' as any]: theme.panel,
-          ['--muted' as any]: theme.muted,
-          ['--ring' as any]: theme.ring,
-        } as React.CSSProperties
-      }
-    >
+    <main className="page" style={cssVars}>
       <a href="#content" className="skip">Skip to content</a>
       <Hero />
 
@@ -272,6 +287,17 @@ export default function Page() {
           --accent: #a855f7;
           --primary: #3b82f6;
           --ring: rgba(168, 85, 247, 0.6);
+
+          /* Safe derived vars (no color-mix) */
+          --border-weak: rgba(255,255,255,0.06);
+          --text-soft: rgba(255,255,255,0.9);
+          --shadow-primary-40: rgba(59,130,246,0.4);
+          --accent-alpha-07: rgba(168,85,247,0.07);
+          --accent-alpha-12: rgba(168,85,247,0.12);
+          --primary-dark-15: #2f66c5;
+          --primary-dark-25: #284fa0;
+          --primary-dark-45: #1d3369;
+          --accent-dark-20: #6f2bc0;
         }
 
         /* Base + mobile-first */
@@ -311,10 +337,10 @@ export default function Page() {
         @media (min-width: 1024px) { .grid > * { grid-column: span 4; } }
 
         .btn {
-          background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary), #000 15%));
+          background: linear-gradient(90deg, var(--primary), var(--primary-dark-15));
           color: #ffffff; border: none; padding: 12px 18px; border-radius: 12px;
           font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
-          box-shadow: 0 10px 26px color-mix(in srgb, var(--primary), transparent 60%);
+          box-shadow: 0 10px 26px var(--shadow-primary-40);
           transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
         }
         .btn:hover { transform: translateY(-2px); }
@@ -323,15 +349,15 @@ export default function Page() {
 
         /* Primary pill used for Proceed to Day 3 – matches image color */
         .btnPrimary {
-          background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--primary), #000 25%));
+          background: linear-gradient(180deg, var(--primary), var(--primary-dark-25));
           color: #fff;
           padding: 14px 26px;
           border-radius: 999px;
           font-weight: 800;
           letter-spacing: 0.2px;
           box-shadow:
-            0 10px 28px color-mix(in srgb, var(--primary), transparent 70%),
-            0 0 0 1px color-mix(in srgb, var(--primary), #000 45%);
+            0 10px 28px var(--shadow-primary-40),
+            0 0 0 1px var(--primary-dark-45);
         }
         .btnPrimary:hover { transform: translateY(-2px); }
         .btnPrimary:active { transform: translateY(-1px) scale(0.99); }
@@ -339,7 +365,7 @@ export default function Page() {
         @media (max-width: 520px) { .btnPrimary { width: 100%; justify-content: center; } }
 
         .pill {
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
+          border: 1px solid var(--border-weak);
           background: var(--panel); color: var(--text); padding: 8px 12px; border-radius: 999px; cursor: pointer;
         }
         .pill:hover { border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring); }
@@ -349,7 +375,7 @@ export default function Page() {
         .quoteCard {
           display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
           background: var(--card);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
+          border: 1px solid var(--border-weak);
           border-radius: 16px; padding: clamp(16px, 3.6vw, 22px);
         }
         blockquote { margin: 0; font-size: clamp(1rem, 2.5vw, 1.15rem); line-height: 1.6; }
@@ -357,9 +383,9 @@ export default function Page() {
         .dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
         .dot {
           width: 10px; height: 10px; border-radius: 50%;
-          background: color-mix(in srgb, var(--text), transparent 94%); border: none; cursor: pointer;
+          background: var(--border-weak); border: none; cursor: pointer;
         }
-        .dot.active { background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent), #000 20%)); }
+        .dot.active { background: linear-gradient(90deg, var(--accent), var(--primary-dark-15)); }
 
         /* Stack quote content on very small screens */
         @media (max-width: 520px) {
@@ -373,16 +399,16 @@ export default function Page() {
 
         .legalText {
           background: var(--card);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
+          border: 1px solid var(--border-weak);
           border-radius: 16px; padding: clamp(18px, 3.5vw, 24px);
         }
 
         .certificate {
           background: var(--panel);
-          border: 1px dashed color-mix(in srgb, var(--text), transparent 94%);
+          border: 1px dashed var(--border-weak);
           border-radius: 16px; padding: clamp(10px, 2.5vw, 14px); text-align: center;
         }
-        .certificate :global(img) { width: 100%; height: auto; object-fit: contain; border-radius: 10px; }
+        .certificate img { width: 100%; height: auto; object-fit: contain; border-radius: 10px; }
         .certificate .portrait { max-width: 560px; margin: 0 auto; }
         .certificate small { display: block; margin-top: 8px; color: var(--muted); }
 
@@ -426,18 +452,18 @@ function Hero() {
         .inner { width: 100%; max-width: 900px; }
         .badge {
           display: inline-block; padding: 6px 12px; border-radius: 999px; background: var(--card);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%); color: var(--muted); margin-bottom: 16px;
+          border: 1px solid var(--border-weak); color: var(--muted); margin-bottom: 16px;
         }
         h1 { font-size: clamp(1.9rem, 5.2vw, 3.2rem); margin: 0 0 10px; font-weight: 900; letter-spacing: -0.02em; }
         h1 span {
-          background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent), #000 20%));
+          background: linear-gradient(90deg, var(--accent), var(--accent-dark-20));
           -webkit-background-clip: text; background-clip: text; color: transparent;
         }
-        .sub { color: color-mix(in srgb, var(--text), transparent 10%); opacity: 0.92; margin: 0 auto 20px; line-height: 1.7; max-width: 760px; }
+        .sub { color: var(--text-soft); opacity: 0.92; margin: 0 auto 20px; line-height: 1.7; max-width: 760px; }
         .badges { margin-top: 14px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .mini {
           font-size: 0.85rem; color: var(--muted); background: var(--card);
-          border: 1px dashed color-mix(in srgb, var(--text), transparent 94%); padding: 6px 10px; border-radius: 10px;
+          border: 1px dashed var(--border-weak); padding: 6px 10px; border-radius: 10px;
         }
       `}</style>
     </section>
@@ -456,7 +482,7 @@ function Header({ title, subtitle, badge }: { title: string; subtitle?: string; 
         .head { margin-bottom: clamp(16px, 3vw, 22px); }
         .tag {
           display: inline-block; margin-bottom: 8px; background: var(--panel); color: var(--accent);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%); padding: 6px 10px; border-radius: 999px; font-weight: 700; letter-spacing: 0.2px;
+          border: 1px solid var(--border-weak); padding: 6px 10px; border-radius: 999px; font-weight: 700; letter-spacing: 0.2px;
         }
         h2 { margin: 0 0 6px; font-size: clamp(1.25rem, 3.2vw, 2rem); }
         .sub { margin: 0; color: var(--muted); max-width: 800px; }
@@ -482,7 +508,7 @@ function CourseCard({ title, badge, points, comingSoon }: Course) {
       <style jsx>{`
         .card {
           background: var(--card);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
+          border: 1px solid var(--border-weak);
           border-radius: 16px; padding: clamp(16px, 3vw, 20px);
           display: flex; flex-direction: column; gap: 10px; min-height: 260px;
         }
@@ -491,9 +517,9 @@ function CourseCard({ title, badge, points, comingSoon }: Course) {
         h3 { margin: 0; font-size: clamp(1rem, 2.6vw, 1.15rem); }
         .badge {
           padding: 6px 10px; border-radius: 999px; background: var(--panel); color: var(--muted);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%); font-size: 0.85rem;
+          border: 1px solid var(--border-weak); font-size: 0.85rem;
         }
-        ul { margin: 0; padding-left: 18px; color: color-mix(in srgb, var(--text), transparent 10%); flex: 1; }
+        ul { margin: 0; padding-left: 18px; color: var(--text-soft); flex: 1; }
         li { margin: 6px 0; }
       `}</style>
     </article>
@@ -517,19 +543,19 @@ function SessionCard({ day, title, highlights, quote }: { day: number; title: st
 
       <style jsx>{`
         .session {
-          background: linear-gradient(180deg, color-mix(in srgb, var(--accent), transparent 93%), transparent), var(--card);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
+          background: linear-gradient(180deg, var(--accent-alpha-07), transparent), var(--card);
+          border: 1px solid var(--border-weak);
           border-radius: 16px; padding: clamp(16px, 3vw, 20px);
         }
         .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
         h3 { margin: 0; font-size: clamp(1rem, 2.6vw, 1.15rem); }
         .badge {
           padding: 6px 10px; border-radius: 999px; background: var(--panel); color: var(--muted);
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%); font-size: 0.85rem;
+          border: 1px solid var(--border-weak); font-size: 0.85rem;
         }
-        .points { margin: 10px 0 14px; padding-left: 18px; color: color-mix(in srgb, var(--text), transparent 10%); }
+        .points { margin: 10px 0 14px; padding-left: 18px; color: var(--text-soft); }
         .points li { margin: 6px 0; }
-        .highlight { background: var(--panel); border: 1px dashed color-mix(in srgb, var(--text), transparent 94%); border-radius: 12px; padding: 14px; }
+        .highlight { background: var(--panel); border: 1px dashed var(--border-weak); border-radius: 12px; padding: 14px; }
         .label { display: inline-block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
         .q { margin: 0; font-weight: 700; letter-spacing: 0.2px; }
       `}</style>
@@ -581,14 +607,12 @@ function CTA() {
       </div>
       <style jsx>{`
         .ctaWrap {
-          background: linear-gradient(135deg,
-            color-mix(in srgb, var(--accent), transparent 92%),
-            color-mix(in srgb, var(--accent), transparent 88%));
-          border: 1px solid color-mix(in srgb, var(--text), transparent 94%);
+          background: linear-gradient(135deg, var(--accent-alpha-07), var(--accent-alpha-12));
+          border: 1px solid var(--border-weak);
           padding: clamp(20px, 3.6vw, 28px); border-radius: 16px; text-align: center; max-width: 900px; margin: 0 auto;
         }
         h3 { margin: 0 0 8px; font-size: clamp(1.15rem, 2.8vw, 1.4rem); }
-        p { margin: 0 0 14px; color: color-mix(in srgb, var(--text), transparent 10%); }
+        p { margin: 0 0 14px; color: var(--text-soft); }
         .stack { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; width: 100%; }
       `}</style>
     </section>
@@ -603,7 +627,7 @@ function Footer() {
         <span>Legal Reg. No: {REG_NUMBER}</span>
       </div>
       <style jsx>{`
-        .foot { margin-top: auto; border-top: 1px solid color-mix(in srgb, var(--text), transparent 95%); padding: 18px 20px; }
+        .foot { margin-top: auto; border-top: 1px solid var(--border-weak); padding: 18px 20px; }
         .wrap {
           max-width: 1100px; margin: 0 auto;
           display: flex; justify-content: space-between; align-items: center;
