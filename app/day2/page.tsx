@@ -494,11 +494,7 @@ function Header({ title, subtitle, badge }: { title: string; subtitle?: string; 
 function CourseCard({ title, badge, points, comingSoon }: Course) {
   return (
     <article className={`card ${comingSoon ? 'muted' : ''}`} role="listitem">
-      <header className="top">
-        <h3>{title}</h3>
-        {badge && <span className="badge">{badge}</span>}
-        {comingSoon && <span className="badge">Coming soon</span>}
-      </header>
+      
       <ul>
         {points.map((p, i) => (
           <li key={i}>{p}</li>
