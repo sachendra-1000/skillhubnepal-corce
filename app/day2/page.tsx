@@ -105,7 +105,7 @@ export default function Page() {
       </section>
 
       <div className="ctaWrap">
-        <button className="ctaBlue">Proceed to Day 3</button>
+        <a href="/day3" className="ctaBlue">Proceed to Day 3</a>
       </div>
 
       <style jsx>{`
