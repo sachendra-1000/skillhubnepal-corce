@@ -1,3 +1,4 @@
+// app/page.tsx
 "use client";
 
 import { Poppins } from "next/font/google";
@@ -5,306 +6,192 @@ import { Poppins } from "next/font/google";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
+  display: "swap",
 });
 
 export default function Page() {
   return (
     <main className={`page ${poppins.className}`}>
-      
-
       <section className="hero">
         <h1 className="title">
-          <span className="welcome">Welcome to the</span>
+          <span className="uni">The Skill Hub Nepal:</span>
           <br />
-          <span className="highlight">5-Day Learning Journey</span>
+          <span className="journey">5–Day Learning Journey</span>
         </h1>
 
         <p className="subtitle">
-          Embark on a transformative journey to master new skills and unlock your potential.
+          Join The Skill Hub Nepal 5-day program to master creative skills like
+          Premiere Pro, Photoshop, and Digital Marketing. Discover our
+          innovative platform, earn through affiliate marketing, and build a
+          strong personal brand to achieve your goals.
         </p>
 
-        <a href="/day1" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="day-one">Day 1</div>
-        </a>
-
-        <div className="cards">
-          <article className="card">
-            <div className="badge">2</div>
-            <div className="card-title">
-              <a href="/day2" style={{ color: "inherit", textDecoration: "none" }}>Day 2</a>
-            </div>
-            <div className="card-desc">Unlock Course Content</div>
-          </article>
-
-          <article className="card">
-            <div className="badge">3</div>
-            <div className="card-title">
-              <a href="/day3" style={{ color: "inherit", textDecoration: "none" }}>Day 3</a>
-            </div>
-            <div className="card-desc">Live Q&amp;A Session</div>
-          </article>
-
-          <article className="card">
-            <div className="badge">4</div>
-            <div className="card-title">
-              <a href="/day4" style={{ color: "inherit", textDecoration: "none" }}>Day 4</a>
-            </div>
-            <div className="card-desc">Practical Assignment</div>
-          </article>
-
-          <article className="card">
-            <div className="badge">5</div>
-            <div className="card-title">
-              <a href="/day5" style={{ color: "inherit", textDecoration: "none" }}>Day 5</a>
-            </div>
-            <div className="card-desc">Get Certified</div>
-          </article>
-        </div>
-
-        <a href="/day1" className="cta">Let&apos;s Start Learning</a>
+        <a href="/day1" className="cta">Begin Day 1</a>
       </section>
 
       <style jsx>{`
         .page {
-          --bg: #0a0a0f;
-          --card: #1a1d2e;
+          --bg: #07090f;
           --text: #ffffff;
-          --muted: #94a3b8;
-          --accent-start: #06b6d4;
-          --accent-end: #0891b2;
-          --secondary-start: #10b981;
-          --secondary-end: #059669;
+          --muted: #c9d1e5;
+          --purple: #8b5cf6;
+          --blue: #3b82f6;
 
           min-height: 100dvh;
-          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+          background: var(--bg);
           color: var(--text);
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          place-items: center;
           position: relative;
+          overflow: hidden;
+          padding: 6rem 1.25rem;
+          isolation: isolate; /* keep glows behind */
+        }
+
+        /* Big background glows */
+        .page::before,
+        .page::after {
+          content: "";
+          position: fixed;
+          width: 65vw;
+          height: 65vw;
+          border-radius: 9999px;
+          filter: blur(90px);
+          opacity: 0.55;
+          z-index: -1;
+          pointer-events: none;
         }
         .page::before {
-          content: '';
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+          top: -25vw;
+          left: -25vw;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(139, 92, 246, 0.85) 0%,
+            rgba(139, 92, 246, 0) 65%
+          );
+          animation: floaty 12s ease-in-out infinite;
+        }
+        .page::after {
+          top: -30vw;
+          right: -30vw;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(59, 130, 246, 0.9) 0%,
+            rgba(59, 130, 246, 0) 65%
+          );
+          animation: floaty 12s ease-in-out infinite reverse;
+        }
+
+        .hero::before {
+          /* bottom-left soft glow */
+          content: "";
+          position: absolute;
+          bottom: -35vw;
+          left: 10vw;
+          width: 80vw;
+          height: 80vw;
+          border-radius: 9999px;
+          filter: blur(100px);
+          opacity: 0.45;
+          z-index: -1;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(86, 79, 191, 0.7) 0%,
+            rgba(86, 79, 191, 0) 60%
+          );
           pointer-events: none;
-          z-index: 0;
+          animation: floaty 14s ease-in-out infinite;
         }
 
-        /* NAV */
-        .nav {
-          max-width: 1200px;
-          margin: 0 auto;
-          width: 100%;
-          padding: 16px 20px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background: rgba(26, 29, 46, 0.4);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          transition: all 0.3s ease;
-          position: relative;
-          z-index: 10;
-        }
-        .brand {
-          font-weight: 800;
-          font-size: 18px;
-          letter-spacing: 0.2px;
-          color: var(--accent-start);
-        }
-        .menu {
-          display: flex;
-          align-items: center;
-          gap: 26px;
-        }
-        .menu a {
-          color: #e5e5e5;
-          text-decoration: none;
-          font-weight: 500;
-          opacity: 0.9;
-          transition: all 0.3s ease;
-          padding: 8px 16px;
-          border-radius: 8px;
-          position: relative;
-        }
-        .menu a:hover {
-          opacity: 1;
-          background: rgba(6, 182, 212, 0.1);
-          color: var(--accent-start);
-        }
-        .login {
-          margin-left: 6px;
-          padding: 8px 14px;
-          border: 0;
-          border-radius: 8px;
-          color: #fff;
-          font-weight: 700;
-          background: linear-gradient(135deg, var(--blue-start), var(--blue-end));
-          box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
-          cursor: pointer;
-        }
-
-        /* HERO */
         .hero {
-          max-width: 1100px;
-          width: 100%;
-          margin: 60px auto 0;
-          padding: 0 20px 70px;
+          width: min(1100px, 100%);
+          margin: 0 auto;
           text-align: center;
-          position: relative;
-          z-index: 1;
         }
+
         .title {
-          margin: 34px 0 10px;
+          margin: 0 0 10px;
+          line-height: 1.05;
+          letter-spacing: -0.01em;
+        }
+        .uni {
+          display: inline-block;
           font-weight: 800;
-          line-height: 1.2;
-          font-size: clamp(32px, 6vw, 56px);
-          letter-spacing: -0.02em;
-        }
-        .welcome {
-          color: #ffffff;
-        }
-        .highlight {
-          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
+          font-size: clamp(2rem, 4.5vw, 4rem);
+          background: linear-gradient(90deg, var(--purple), var(--blue));
           -webkit-background-clip: text;
           background-clip: text;
-          color: transparent;
-          display: inline-block;
+          -webkit-text-fill-color: transparent;
         }
+        .journey {
+          display: inline-block;
+          font-weight: 800;
+          font-size: clamp(2.5rem, 6.5vw, 5rem);
+          color: #fff;
+          text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
         .subtitle {
-          margin: 20px auto 40px;
+          width: min(820px, 100%);
+          margin: 16px auto 30px;
           color: var(--muted);
-          font-size: 16px;
-          max-width: 650px;
+          font-weight: 500;
+          font-size: clamp(1rem, 0.6vw + 0.9rem, 1.2rem);
           line-height: 1.6;
         }
 
-        /* DAY 1 CIRCLE */
-        .day-one {
-          width: 140px;
-          height: 140px;
-          margin: 40px auto 50px;
-          border-radius: 999px;
-          display: grid;
-          place-items: center;
-          font-weight: 800;
-          font-size: 24px;
-          color: #fff;
-          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
-          box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3),
-            0 0 60px rgba(16, 185, 129, 0.2),
-            inset 0 -8px 16px rgba(0, 0, 0, 0.2);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-        .day-one:hover {
-          transform: translateY(-4px) scale(1.05);
-          box-shadow: 0 25px 50px rgba(6, 182, 212, 0.4),
-            0 0 80px rgba(16, 185, 129, 0.3);
-        }
-
-        /* CARDS */
-        .cards {
-          margin: 8px auto 34px;
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 22px;
-          max-width: 1100px;
-        }
-        .card {
-          position: relative;
-          background: rgba(26, 29, 46, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
-            0 10px 30px rgba(0, 0, 0, 0.3);
-          border-radius: 16px;
-          padding: 28px 20px 24px;
-          text-align: center;
-          min-height: 140px;
-          backdrop-filter: blur(10px);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-        .card:hover {
-          transform: translateY(-8px);
-          border-color: rgba(6, 182, 212, 0.3);
-          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15),
-            0 20px 40px rgba(6, 182, 212, 0.2);
-        }
-        .badge {
-          position: absolute;
-          top: -20px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 56px;
-          height: 56px;
-          border-radius: 999px;
-          display: grid;
-          place-items: center;
-          font-weight: 800;
-          font-size: 18px;
-          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
-          color: #ffffff;
-          box-shadow: 0 12px 24px rgba(6, 182, 212, 0.4);
-          transition: all 0.3s ease;
-        }
-        .card:hover .badge {
-          transform: translateX(-50%) scale(1.1);
-          box-shadow: 0 16px 32px rgba(6, 182, 212, 0.5);
-        }
-        .card-title {
-          margin-top: 32px;
-          font-weight: 700;
-          font-size: 18px;
-        }
-        .card-desc {
-          margin-top: 8px;
-          color: var(--muted);
-          font-size: 13px;
-        }
-
-        /* CTA */
         .cta {
-          display: inline-block;
-          margin-top: 20px;
-          padding: 16px 40px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: 56px;
+          padding: 0 26px;
           border-radius: 999px;
-          border: 0;
-          font-weight: 700;
-          font-size: 16px;
+          font-weight: 800;
           color: #fff;
           text-decoration: none;
-          background: linear-gradient(135deg, var(--accent-start), var(--secondary-start));
-          box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
-          cursor: pointer;
-          transition: all 0.3s ease;
+          background: linear-gradient(135deg, var(--purple), var(--blue));
+          box-shadow: 0 10px 30px rgba(66, 99, 255, 0.35),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+          transition: transform 0.2s ease, filter 0.2s ease;
         }
         .cta:hover {
           transform: translateY(-2px);
-          box-shadow: 0 15px 40px rgba(6, 182, 212, 0.5);
+          filter: brightness(1.05);
+        }
+        .cta:active {
+          transform: translateY(0);
+        }
+        .cta:focus-visible {
+          outline: 3px solid rgba(99, 102, 241, 0.85);
+          outline-offset: 3px;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-          .cards {
-            grid-template-columns: repeat(2, 1fr);
+        @keyframes floaty {
+          0%,
+          100% {
+            transform: translateY(0) scale(1);
+          }
+          50% {
+            transform: translateY(-1.5%) scale(1.03);
           }
         }
-        @media (max-width: 560px) {
-          .menu a:nth-child(-n + 3) {
-            display: none;
+
+        @media (prefers-reduced-motion: reduce) {
+          .page::before,
+          .page::after,
+          .hero::before {
+            animation: none;
           }
-          .title {
-            font-size: 32px;
-          }
-          .cards {
-            grid-template-columns: 1fr;
-          }
+        }
+      `}</style>
+
+      <style jsx global>{`
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          background: #07090f; /* prevents white edges on very tall pages */
         }
       `}</style>
     </main>
