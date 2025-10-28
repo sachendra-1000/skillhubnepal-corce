@@ -12,61 +12,63 @@ export default function Page() {
         <div className="absolute bottom-10 right-1/3 h-72 w-72 rounded-full bg-violet-600/10 blur-3xl" />
       </div>
 
-      <main className="mx-auto max-w-6xl px-4">
+      <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Hero */}
-        <section className="py-12 text-center md:py-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold text-slate-200">
+        <section className="py-10 text-center sm:py-12 md:py-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold text-slate-200 sm:text-xs">
             Day 4
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
             Personal Branding & Content
           </div>
 
-          <h1 className="mt-4 text-3xl font-extrabold tracking-tight md:text-5xl">
+          <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
             <span className="text-white">Personal Branding</span>{" "}
             <span className="bg-gradient-to-r from-[#a855f7] to-[#7c3aed] bg-clip-text text-transparent">
               & Content Strategy
             </span>
           </h1>
-          <p className="mx-auto mt-3 max-w-3xl text-sm text-[#d1d1d6] md:text-base">
+          <p className="mx-auto mt-3 max-w-3xl text-sm text-[#d1d1d6] sm:text-base md:text-lg">
             Build a compelling online presence and create content that resonates with your audience.
           </p>
         </section>
 
         {/* Personal Branding */}
         <SectionTitle icon={<SparkIcon />}>What is Personal Branding?</SectionTitle>
-        <div className="mt-4 grid gap-6 md:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
           <Card>
-            <p className="text-lg leading-relaxed text-slate-200">
+            <p className="text-sm leading-relaxed text-slate-200 sm:text-base md:text-lg">
               Define your personal brand by identifying your unique values, skills, and passions.
               Your brand is your story — what makes you stand out?
             </p>
-            <ul className="mt-3 space-y-2 text-lg text-slate-300">
+            <ul className="mt-3 space-y-2 text-sm text-slate-300 sm:text-base">
               <Rule>Clarify your niche and audience.</Rule>
               <Rule>Pick 2–3 platforms you’ll focus on.</Rule>
               <Rule>Create a consistent visual identity.</Rule>
             </ul>
           </Card>
 
-          <Image
-            src="/images/Perosnal-branding.jpg"
-            alt="Branding example with logo and visual identity"
-            width={250}
-            height={180}
-            sizes="(max-width: 768px) 60vw, 20vw"
-            className="h-40 w-56 rounded-2xl border border-white/10 object-cover shadow-[0_18px_55px_rgba(0,0,0,0.45)] mx-auto"
-            priority
-          />
+          {/* Responsive image with aspect ratio */}
+          <div className="relative mx-auto w-full max-w-sm sm:max-w-md md:max-w-none md:w-full aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
+            <Image
+              src="/images/Perosnal-branding.jpg"
+              alt="Branding example with logo and visual identity"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 560px"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
 
         {/* Building Your Online Identity */}
         <SectionTitle icon={<SparkIcon />}>Building Your Online Identity</SectionTitle>
-        <div className="mt-4 grid gap-6 md:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
           <Card>
-            <p className="text-lg leading-relaxed text-slate-200">
+            <p className="text-sm leading-relaxed text-slate-200 sm:text-base md:text-lg">
               Optimize your social profiles (Instagram, LinkedIn, YouTube) with a strong bio,
               relevant keywords, and a clean link hub (e.g., Linktree). Keep your visuals on brand.
             </p>
-            <ul className="mt-3 grid grid-cols-1 gap-2 text-base text-slate-300 sm:grid-cols-2">
+            <ul className="mt-3 grid grid-cols-1 gap-2 text-sm text-slate-300 sm:grid-cols-2 sm:text-base">
               <Rule>Clear headline/bio</Rule>
               <Rule>Branded profile + banner</Rule>
               <Rule>Pinned post with CTA</Rule>
@@ -74,22 +76,23 @@ export default function Page() {
             </ul>
           </Card>
 
-          <Image
-            src="/images/Online-identity.jpg"
-            alt="Optimized social profile preview"
-            width={400}
-            height={270}
-            sizes="(max-width: 768px) 80vw, 30vw"
-            className="h-48 w-64 rounded-2xl border border-white/10 object-cover shadow-[0_18px_55px_rgba(0,0,0,0.45)] mx-auto"
-          />
+          <div className="relative mx-auto w-full max-w-sm sm:max-w-md md:max-w-none md:w-full aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
+            <Image
+              src="/images/Online-identity.jpg"
+              alt="Optimized social profile preview"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 560px"
+              className="object-cover"
+            />
+          </div>
         </div>
 
         {/* Content Strategy */}
         <section className="mt-10">
           <SectionTitle icon={<StrategyIcon />}>Content Strategy</SectionTitle>
 
-          <div className="mt-4 rounded-2xl border border-white/[0.10] bg-[#141726]/80 p-6 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur md:p-8">
-            <h3 className="text-lg font-semibold text-white">
+          <div className="mt-4 rounded-2xl border border-white/10 bg-[#141726]/80 p-5 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur sm:p-6 md:p-8">
+            <h3 className="text-base font-semibold text-white sm:text-lg">
               Plan a 7‑day calendar with educational posts, testimonials, and engaging formats
               (reels, carousels) to promote Skill Hub Nepal.
             </h3>
@@ -100,26 +103,27 @@ export default function Page() {
             </Callout>
 
             <SectionTitle icon={<SparkIcon />}>Mini‑Assignment</SectionTitle>
-            <div className="mt-4 grid gap-6 md:grid-cols-2">
+            <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
               <Card>
-              <p className="text-lg leading-relaxed text-slate-200">
-                Create a personal brand profile (bio + profile picture) and publish one promotional
-                post (short video or carousel). Share it with your network.
-              </p>
+                <p className="text-sm leading-relaxed text-slate-200 sm:text-base md:text-lg">
+                  Create a personal brand profile (bio + profile picture) and publish one promotional
+                  post (short video or carousel). Share it with your network.
+                </p>
               </Card>
 
-              <Image
-              src="/images/Content-straregy.jpg"
-              alt="Sample promotional post"
-              width={300}
-              height={300}
-              sizes="(max-width: 768px) 60vw, 30vw"
-              className="h-48 w-48 rounded-2xl border border-white/10 object-cover shadow-[0_18px_55px_rgba(0,0,0,0.45)] mx-auto"
-              />
+              <div className="relative mx-auto w-full max-w-sm sm:max-w-md md:max-w-none aspect-[1/1] overflow-hidden rounded-2xl border border-white/10 shadow-[0_18px_55px_rgba(0,0,0,0.45)]">
+                <Image
+                  src="/images/Content-straregy.jpg"
+                  alt="Sample promotional post"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 480px"
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             {/* Pillars */}
-            <div className="mt-6 grid gap-6 md:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <Pillar number="1. Plan" color="from-purple-400 to-fuchsia-500">
                 Define content goals, choose key themes (pillars), and map posts to a weekly calendar.
               </Pillar>
@@ -135,14 +139,14 @@ export default function Page() {
         </section>
 
         {/* CTA */}
-        <div className="flex flex-col items-center justify-center gap-3 py-12">
+        <div className="flex flex-col items-center justify-center gap-3 py-10 sm:py-12">
           <Link
             href="/day5"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] px-6 py-3 font-extrabold text-white shadow-[0_10px_26px_rgba(37,99,235,0.4)] transition hover:from-[#60a5fa] hover:to-[#3b82f6] hover:shadow-[0_10px_30px_rgba(37,99,235,0.5)] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] px-5 py-2.5 text-sm font-extrabold text-white shadow-[0_10px_26px_rgba(37,99,235,0.4)] transition hover:from-[#60a5fa] hover:to-[#3b82f6] hover:shadow-[0_10px_30px_rgba(37,99,235,0.5)] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] sm:px-6 sm:py-3 sm:text-base"
           >
             Proceed to Day 5 →
           </Link>
-          <p className="text-xs text-slate-400">You can revisit this guide anytime.</p>
+          <p className="text-[11px] text-slate-400 sm:text-xs">You can revisit this guide anytime.</p>
         </div>
       </main>
     </div>
@@ -158,8 +162,8 @@ function SectionTitle({
   children: ReactNode;
 }) {
   return (
-    <h2 className="mt-8 flex items-center gap-3 text-xl font-extrabold tracking-tight">
-      <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-b from-[#c084fc] to-[#7c3aed] text-white shadow-[0_10px_22px_rgba(124,58,237,0.35)]">
+    <h2 className="mt-8 flex items-center gap-3 text-lg font-extrabold tracking-tight sm:text-xl md:text-2xl">
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-b from-[#c084fc] to-[#7c3aed] text-white shadow-[0_10px_22px_rgba(124,58,237,0.35)] sm:h-9 sm:w-9">
         {icon}
       </span>
       <span className="bg-gradient-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">
@@ -172,7 +176,7 @@ function SectionTitle({
 /* -------------- UI Building Blocks -------------- */
 function Card({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/[0.10] bg-[#0f1220]/80 p-6 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur">
+    <div className="rounded-2xl border border-white/10 bg-[#0f1220]/80 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur sm:p-6">
       {children}
     </div>
   );
@@ -180,7 +184,7 @@ function Card({ children }: { children: ReactNode }) {
 
 function Callout({ children }: { children: ReactNode }) {
   return (
-    <div className="mt-4 rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+    <div className="mt-4 rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-100 sm:px-4 sm:py-3 sm:text-sm">
       <div className="flex items-start gap-2">
         <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400 text-[#0b0b0f]">
           ✓
@@ -194,7 +198,7 @@ function Callout({ children }: { children: ReactNode }) {
 function Rule({ children }: { children: ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <CheckIcon className="mt-0.5 h-5 w-5 text-[#c084fc]" />
+      <CheckIcon className="mt-0.5 h-4 w-4 text-[#c084fc] sm:h-5 sm:w-5" />
       <span className="text-slate-300">{children}</span>
     </li>
   );
@@ -210,11 +214,11 @@ function Pillar({
   color?: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/[0.06] bg-[#0f1220]/80 p-5 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur">
-      <div className={`inline-flex items-center rounded-full bg-gradient-to-r ${color} px-3 py-1 text-xs font-bold text-black/90`}>
+    <div className="rounded-xl border border-white/10 bg-[#0f1220]/80 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur sm:p-5">
+      <div className={`inline-flex items-center rounded-full bg-gradient-to-r ${color} px-3 py-1 text-[11px] font-bold text-black/90 sm:text-xs`}>
         {number}
       </div>
-      <p className="mt-3 text-sm text-slate-300">{children}</p>
+      <p className="mt-3 text-sm text-slate-300 sm:text-[15px]">{children}</p>
     </div>
   );
 }
