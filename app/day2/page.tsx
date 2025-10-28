@@ -29,7 +29,7 @@ export default function Page() {
             Open Login
           </a>
           <a
-            href="https://skillhubnepal.com.np/register"
+            href="https://skillhubnepal.com.np/signup"
             target="_blank"
             rel="noopener noreferrer"
             className="btnGhost"
@@ -212,7 +212,7 @@ export default function Page() {
                 Open Login
               </a>
               <a
-                href="https://skillhubnepal.com.np/register"
+                href="https://skillhubnepal.com.np/signup"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btnGhost small"
