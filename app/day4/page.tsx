@@ -1,105 +1,148 @@
 import Link from "next/link";
+import Image from "next/image";
+import type { ReactNode } from "react";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#000] text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#0b0b0f] text-white">
+      {/* ambient glows */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-24 -right-12 h-72 w-72 rounded-full bg-fuchsia-600/20 blur-3xl" />
+        <div className="absolute -top-16 left-0 h-96 w-96 rounded-full bg-blue-600/20 blur-[110px]" />
+        <div className="absolute bottom-10 right-1/3 h-72 w-72 rounded-full bg-violet-600/10 blur-3xl" />
+      </div>
+
       <main className="mx-auto max-w-6xl px-4">
         {/* Hero */}
         <section className="py-12 text-center md:py-16">
-          <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
-            <span className="text-white">Day 4:</span>{" "}
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold text-slate-200">
+            Day 4
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            Personal Branding & Content
+          </div>
+
+          <h1 className="mt-4 text-3xl font-extrabold tracking-tight md:text-5xl">
+            <span className="text-white">Personal Branding</span>{" "}
             <span className="bg-gradient-to-r from-[#a855f7] to-[#7c3aed] bg-clip-text text-transparent">
-              Personal Branding & Content Strategy
+              & Content Strategy
             </span>
           </h1>
-          <p className="mt-3 text-sm text-[#d1d1d6] md:text-base">
-            Master the art of building a compelling online presence and creating content that
-            resonates.
+          <p className="mx-auto mt-3 max-w-3xl text-sm text-[#d1d1d6] md:text-base">
+            Build a compelling online presence and create content that resonates with your audience.
           </p>
         </section>
 
         {/* Personal Branding */}
-        <section className="mt-2">
-          <SectionTitle icon={<SparkIcon />}>What is Personal Branding?</SectionTitle>
-
-          <div className="mt-4 grid gap-6 md:grid-cols-2">
-            <Card>
-              <p className="mt-2 text-sm text-[#e9e9ee]">
-                Define your personal brand by identifying your unique values, skills, and
-                passions. Your brand is your story. What makes you stand out?
-              </p>
-            </Card>
-          </div>
-        </section>
-
-        {/* Content Creation Tools */}
-        <SectionTitle icon={<SparkIcon />}>Building Your Online Identity</SectionTitle>
+        <SectionTitle icon={<SparkIcon />}>What is Personal Branding?</SectionTitle>
         <div className="mt-4 grid gap-6 md:grid-cols-2">
           <Card>
-            <p className="mt-2 text-sm text-[#e9e9ee]">
-              Optimize social media profiles (Instagram, LinkedIn, YouTube) with professional bios,
-              visuals, and links to your affiliate pages using tools like Linktree.
+            <p className="text-lg leading-relaxed text-slate-200">
+              Define your personal brand by identifying your unique values, skills, and passions.
+              Your brand is your story — what makes you stand out?
             </p>
+            <ul className="mt-3 space-y-2 text-lg text-slate-300">
+              <Rule>Clarify your niche and audience.</Rule>
+              <Rule>Pick 2–3 platforms you’ll focus on.</Rule>
+              <Rule>Create a consistent visual identity.</Rule>
+            </ul>
           </Card>
+
+          <Image
+            src="/images/Perosnal-branding.jpg"
+            alt="Branding example with logo and visual identity"
+            width={250}
+            height={180}
+            sizes="(max-width: 768px) 60vw, 20vw"
+            className="h-40 w-56 rounded-2xl border border-white/10 object-cover shadow-[0_18px_55px_rgba(0,0,0,0.45)] mx-auto"
+            priority
+          />
         </div>
 
+        {/* Building Your Online Identity */}
         <SectionTitle icon={<SparkIcon />}>Building Your Online Identity</SectionTitle>
         <div className="mt-4 grid gap-6 md:grid-cols-2">
           <Card>
-            <p className="mt-2 text-sm text-[#e9e9ee]">
-              Optimize social media profiles (Instagram, LinkedIn, YouTube) with professional bios,
-              visuals, and links to your affiliate pages using tools like Linktree.
+            <p className="text-lg leading-relaxed text-slate-200">
+              Optimize your social profiles (Instagram, LinkedIn, YouTube) with a strong bio,
+              relevant keywords, and a clean link hub (e.g., Linktree). Keep your visuals on brand.
             </p>
+            <ul className="mt-3 grid grid-cols-1 gap-2 text-base text-slate-300 sm:grid-cols-2">
+              <Rule>Clear headline/bio</Rule>
+              <Rule>Branded profile + banner</Rule>
+              <Rule>Pinned post with CTA</Rule>
+              <Rule>Link hub to offers/pages</Rule>
+            </ul>
           </Card>
+
+          <Image
+            src="/images/Online-identity.jpg"
+            alt="Optimized social profile preview"
+            width={400}
+            height={270}
+            sizes="(max-width: 768px) 80vw, 30vw"
+            className="h-48 w-64 rounded-2xl border border-white/10 object-cover shadow-[0_18px_55px_rgba(0,0,0,0.45)] mx-auto"
+          />
         </div>
 
         {/* Content Strategy */}
         <section className="mt-10">
           <SectionTitle icon={<StrategyIcon />}>Content Strategy</SectionTitle>
 
-          <div className="mt-4 rounded-2xl border border-white/[0.06] bg-[#23263a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)] md:p-8">
+          <div className="mt-4 rounded-2xl border border-white/[0.10] bg-[#141726]/80 p-6 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur md:p-8">
             <h3 className="text-lg font-semibold text-white">
-              Develop a 7-day content calendar with educational posts, testimonials,
-              and engaging formats (videos, carousels) to effectively promote Skill Hub Nepal.
+              Plan a 7‑day calendar with educational posts, testimonials, and engaging formats
+              (reels, carousels) to promote Skill Hub Nepal.
             </h3>
 
-            <SectionTitle icon={<SparkIcon />}>Mini-Assignment</SectionTitle>
+            <Callout>
+              Pro tip: Batch‑create content for the week in one sitting and schedule it using tools
+              like Meta Business Suite or Buffer.
+            </Callout>
+
+            <SectionTitle icon={<SparkIcon />}>Mini‑Assignment</SectionTitle>
             <div className="mt-4 grid gap-6 md:grid-cols-2">
               <Card>
-                <p className="mt-2 text-sm text-[#e9e9ee]">
-                  Skill Hub Nepal — Create a personal brand profile with a bio, profile picture,
-                  and a promotional post (e.g., video or carousel) to share with your network.
-                </p>
+              <p className="text-lg leading-relaxed text-slate-200">
+                Create a personal brand profile (bio + profile picture) and publish one promotional
+                post (short video or carousel). Share it with your network.
+              </p>
               </Card>
+
+              <Image
+              src="/images/Content-straregy.jpg"
+              alt="Sample promotional post"
+              width={300}
+              height={300}
+              sizes="(max-width: 768px) 60vw, 30vw"
+              className="h-48 w-48 rounded-2xl border border-white/10 object-cover shadow-[0_18px_55px_rgba(0,0,0,0.45)] mx-auto"
+              />
             </div>
 
+            {/* Pillars */}
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               <Pillar number="1. Plan" color="from-purple-400 to-fuchsia-500">
-                Define your content goals, identify your key themes (content pillars), and
-                create a content calendar to stay organized and consistent.
+                Define content goals, choose key themes (pillars), and map posts to a weekly calendar.
               </Pillar>
               <Pillar number="2. Create" color="from-blue-400 to-indigo-500">
-                Produce high-quality, valuable content in various formats (blog posts,
-                videos, podcasts, infographics) that addresses your audience’s pain points.
+                Produce high‑quality content (posts, videos, carousels) that solves your audience’s
+                problems and showcases your expertise.
               </Pillar>
               <Pillar number="3. Distribute" color="from-emerald-400 to-teal-500">
-                Promote your content across relevant channels (social media, email
-                newsletters, online communities) to maximize its reach and impact.
+                Publish across the right channels and repurpose content to maximize reach and impact.
               </Pillar>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <div className="flex flex-col items-center justify-center gap-3 py-10">
-          <Link href="/day5">
-            <button
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] px-6 py-3 font-extrabold text-white shadow-[0_10px_26px_rgba(37,99,235,0.4)] transition hover:from-[#60a5fa] hover:to-[#3b82f6] hover:shadow-[0_10px_30px_rgba(37,99,235,0.5)] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
-              type="button"
-            >
-              Proceed to Day 5 →
-            </button>
+        <div className="flex flex-col items-center justify-center gap-3 py-12">
+          <Link
+            href="/day5"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] px-6 py-3 font-extrabold text-white shadow-[0_10px_26px_rgba(37,99,235,0.4)] transition hover:from-[#60a5fa] hover:to-[#3b82f6] hover:shadow-[0_10px_30px_rgba(37,99,235,0.5)] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+          >
+            Proceed to Day 5 →
           </Link>
+          <p className="text-xs text-slate-400">You can revisit this guide anytime.</p>
         </div>
       </main>
     </div>
@@ -111,63 +154,49 @@ function SectionTitle({
   icon,
   children,
 }: {
-  icon?: React.ReactNode;
-  children: React.ReactNode;
+  icon?: ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <h2 className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white">
-      <span className="text-[#c084fc]">{icon}</span>
-      {children}
+    <h2 className="mt-8 flex items-center gap-3 text-xl font-extrabold tracking-tight">
+      <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-b from-[#c084fc] to-[#7c3aed] text-white shadow-[0_10px_22px_rgba(124,58,237,0.35)]">
+        {icon}
+      </span>
+      <span className="bg-gradient-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">
+        {children}
+      </span>
     </h2>
   );
 }
 
 /* -------------- UI Building Blocks -------------- */
-function Card({ children }: { children: React.ReactNode }) {
+function Card({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-[#181a2a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
+    <div className="rounded-2xl border border-white/[0.10] bg-[#0f1220]/80 p-6 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur">
       {children}
     </div>
   );
 }
 
-function Rule({ children }: { children: React.ReactNode }) {
+function Callout({ children }: { children: ReactNode }) {
+  return (
+    <div className="mt-4 rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+      <div className="flex items-start gap-2">
+        <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400 text-[#0b0b0f]">
+          ✓
+        </span>
+        <p>{children}</p>
+      </div>
+    </div>
+  );
+}
+
+function Rule({ children }: { children: ReactNode }) {
   return (
     <li className="flex items-start gap-3">
       <CheckIcon className="mt-0.5 h-5 w-5 text-[#c084fc]" />
-      <span className="text-[#a1a1aa]">{children}</span>
+      <span className="text-slate-300">{children}</span>
     </li>
-  );
-}
-
-function Dot({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3">
-      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#c084fc]" />
-      <span className="text-[#a1a1aa]">{children}</span>
-    </li>
-  );
-}
-
-function ToolCard({
-  icon,
-  title,
-  desc,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-}) {
-  return (
-    <div className="flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-[#181a2a] p-5 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-b from-[#c084fc] to-[#7c3aed] shadow-[0_10px_22px_rgba(124,58,237,0.35)] text-white">
-        {icon}
-      </div>
-      <div>
-        <h4 className="font-semibold text-white">{title}</h4>
-        <p className="mt-0.5 text-xs text-[#a1a1aa]">{desc}</p>
-      </div>
-    </div>
   );
 }
 
@@ -177,17 +206,15 @@ function Pillar({
   color = "from-purple-400 to-fuchsia-500",
 }: {
   number: string;
-  children: React.ReactNode;
+  children: ReactNode;
   color?: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/[0.06] bg-[#181a2a] p-5 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
-      <div
-        className={`inline-flex items-center rounded-full bg-gradient-to-r ${color} px-3 py-1 text-xs font-bold text-black/90`}
-      >
+    <div className="rounded-xl border border-white/[0.06] bg-[#0f1220]/80 p-5 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur">
+      <div className={`inline-flex items-center rounded-full bg-gradient-to-r ${color} px-3 py-1 text-xs font-bold text-black/90`}>
         {number}
       </div>
-      <p className="mt-3 text-sm text-[#a1a1aa]">{children}</p>
+      <p className="mt-3 text-sm text-slate-300">{children}</p>
     </div>
   );
 }
@@ -195,54 +222,18 @@ function Pillar({
 /* -------------- Tiny SVG Icons -------------- */
 function SparkIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
       <path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z" />
-    </svg>
-  );
-}
-
-function ToolboxIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <rect x="3" y="7" width="18" height="12" rx="2" />
-      <path d="M7 7V5a2 2 0 012-2h6a2 2 0 012 2v2" />
     </svg>
   );
 }
 
 function StrategyIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
       <circle cx="6" cy="6" r="2" />
       <circle cx="18" cy="6" r="2" />
       <path d="M6 8v4a6 6 0 006 6h6" />
-    </svg>
-  );
-}
-
-function VisualsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
-      <path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" opacity=".35" />
-      <path d="M8 13l3-3 5 6H6l2-3z" />
-    </svg>
-  );
-}
-
-function VideoIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <rect x="3" y="5" width="14" height="14" rx="2" />
-      <path d="M17 9l4-2v10l-4-2z" />
-    </svg>
-  );
-}
-
-function WritingIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <path d="M12 20h9" />
-      <path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z" />
     </svg>
   );
 }
@@ -261,14 +252,6 @@ function CheckIcon({ className = "" }: { className?: string }) {
     >
       <circle cx="12" cy="12" r="9" className="opacity-50" />
       <path d="M8 12.5l2.5 2.5L16 9.5" />
-    </svg>
-  );
-}
-
-function CheckBold({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
-      <path d="M9 16.2l-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4z" />
     </svg>
   );
 }

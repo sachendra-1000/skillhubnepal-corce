@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import type { ReactNode } from "react";
 
 export default function Page() {
   return (
@@ -27,21 +29,49 @@ export default function Page() {
             <Block title="Build Your Brand">
               Create a compelling personal or project brand. Develop a logo,
               a tagline, and a consistent visual identity to stand out.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
             </Block>
 
             <Block title="Content Marketing">
               Share your expertise through blog posts, videos, or social media
               content. Provide value and attract your target audience.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
             </Block>
 
             <Block title="Social Media Engagement">
               Identify the platforms where your audience is most active. Engage in
               conversations, share insights, and build a community.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
             </Block>
 
             <Block title="Networking">
               Connect with peers, mentors, and potential clients or employers
               online and offline. Attend virtual meetups and industry events.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
             </Block>
           </Panel>
 
@@ -50,21 +80,50 @@ export default function Page() {
             <Block title="Create a Portfolio">
               Showcase your best work. A portfolio is a powerful tool to demonstrate
               your skills to potential employers or clients.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
+
             </Block>
 
             <Block title="Launch a Pilot Project">
               Apply your skills to a small‑scale project. This is a great way to gain
               practical experience and gather feedback.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
             </Block>
 
             <Block title="Seek Feedback & Iterate">
               Share your work and be open to constructive criticism. Use feedback to
               improve and refine your skills and projects.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
             </Block>
 
             <Block title="Set Clear Goals">
               Define what you want to achieve. Set measurable, short‑term and
               long‑term goals to track your progress.
+              <Image
+                src="/branding-example.jpg"
+                alt="Branding example with logo and visual identity"
+                width={300}
+                height={200}
+                className="mt-2 rounded-lg"
+              />
             </Block>
           </Panel>
         </section>
@@ -72,7 +131,7 @@ export default function Page() {
         {/* CTA */}
         <div className="flex items-center justify-center py-10">
           <Link
-            href="#"
+            href="/dashboard" // change to your real route
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] px-6 py-3 font-extrabold text-white shadow-[0_10px_26px_rgba(37,99,235,0.4)] transition hover:from-[#60a5fa] hover:to-[#3b82f6] hover:shadow-[0_10px_30px_rgba(37,99,235,0.5)] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
           >
             Complete Journey & Get Certified
@@ -114,9 +173,9 @@ function Panel({
   icon,
 }: {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
   accent?: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }) {
   return (
     <div className="rounded-2xl border border-white/[0.06] bg-[#23263a] p-6 shadow-[0_1px_0_rgba(255,255,255,0.04),0_14px_30px_rgba(0,0,0,0.45)]">
@@ -129,7 +188,7 @@ function Panel({
   );
 }
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div>
       <h4 className="font-semibold text-white">{title}</h4>
