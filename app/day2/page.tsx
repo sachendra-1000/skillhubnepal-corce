@@ -116,7 +116,7 @@ export default function Page() {
               </svg>
             </div>
             <div className="cardBody">
-              <div className="cardTitle">Module 3: Digital Marketing</div>
+              <div className="cardTitle">Module 3:Affiliate marketing</div>
               <p className="cardDesc">
                 Promote products or services using the internet and digital platforms.
               </p>
@@ -247,8 +247,7 @@ export default function Page() {
             <TipItem text="Use a valid, accessible email — needed for verification and notifications." />
             <TipItem text='Choose a strong password (e.g., "Skill@2025Nepal") with uppercase/lowercase letters, numbers, and symbols.' />
             <TipItem text="Enter your full name exactly as on your ID (helps during KYC verification)." />
-            <TipItem text="Provide a correct phone number — it may be used for OTP or future logins." />
-            <TipItem text="Check your inbox and spam for the activation link or OTP after registration." />
+          
             <TipItem text="Keep your credentials safe — use a password manager." />
             <TipItem text="Complete KYC early: Dashboard → Profile → KYC Verification. Upload a clear ID scan and a selfie if required." />
             <TipItem text="Don’t share your account — sharing can cause issues during KYC or withdrawals." />
