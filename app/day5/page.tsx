@@ -30,7 +30,7 @@ export default function Page() {
               Create a compelling personal or project brand. Develop a logo,
               a tagline, and a consistent visual identity to stand out.
               <Image
-                src="/branding-example.jpg"
+                src="/images/Build-your-brand.jpg"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
@@ -42,7 +42,7 @@ export default function Page() {
               Share your expertise through blog posts, videos, or social media
               content. Provide value and attract your target audience.
               <Image
-                src="/branding-example.jpg"
+                src="/images/Content-marketing.jpg"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
@@ -54,7 +54,7 @@ export default function Page() {
               Identify the platforms where your audience is most active. Engage in
               conversations, share insights, and build a community.
               <Image
-                src="/branding-example.jpg"
+                src="/images/Social-media-engagement.png"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
@@ -66,7 +66,7 @@ export default function Page() {
               Connect with peers, mentors, and potential clients or employers
               online and offline. Attend virtual meetups and industry events.
               <Image
-                src="/branding-example.jpg"
+                src="/images/Networking.jpg"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
@@ -81,7 +81,7 @@ export default function Page() {
               Showcase your best work. A portfolio is a powerful tool to demonstrate
               your skills to potential employers or clients.
               <Image
-                src="/branding-example.jpg"
+                src="/images/Portfolio.jpg"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
@@ -94,7 +94,7 @@ export default function Page() {
               Apply your skills to a small‑scale project. This is a great way to gain
               practical experience and gather feedback.
               <Image
-                src="/branding-example.jpg"
+                src="/images/Pilot-Project.jpg"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
@@ -102,23 +102,13 @@ export default function Page() {
               />
             </Block>
 
-            <Block title="Seek Feedback & Iterate">
-              Share your work and be open to constructive criticism. Use feedback to
-              improve and refine your skills and projects.
-              <Image
-                src="/branding-example.jpg"
-                alt="Branding example with logo and visual identity"
-                width={300}
-                height={200}
-                className="mt-2 rounded-lg"
-              />
-            </Block>
+           
 
             <Block title="Set Clear Goals">
               Define what you want to achieve. Set measurable, short‑term and
               long‑term goals to track your progress.
               <Image
-                src="/branding-example.jpg"
+                src="/images/Set-clear-goals.jpg"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
