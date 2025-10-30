@@ -108,7 +108,7 @@ export default function Page() {
               Define what you want to achieve. Set measurable, short‑term and
               long‑term goals to track your progress.
               <Image
-                src="/images/Set-clear-goals.jpg"
+                src="/images/Set-Clear-Goals.jpg"
                 alt="Branding example with logo and visual identity"
                 width={300}
                 height={200}
