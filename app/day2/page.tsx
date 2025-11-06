@@ -115,19 +115,21 @@ export default function Page() {
                 <path d="M14 4l-4 16" />
               </svg>
             </div>
-            <div className="cardBody">
-              <div className="cardTitle">Module 3:Affiliate marketing</div>
-              <p className="cardDesc">
-                Promote products or services using the internet and digital platforms.
-              </p>
-              <ul className="bulletList">
-                <li><b>SEO:</b> Improve ranking on Google</li>
-                <li><b>Social Media Marketing:</b> Facebook, Instagram, etc.</li>
-                <li><b>Email Marketing:</b> Offers and updates to customers</li>
-                <li><b>Content Marketing:</b> Posts, blogs, and videos</li>
-                <li><b>Paid Ads:</b> Google or Facebook ads</li>
-              </ul>
-            </div>
+           <div className="cardBody">
+  <div className="cardTitle">Module 3: Digital Marketing</div>
+  <p className="cardDesc">
+    Promote products or services using the internet and digital platforms.
+  </p>
+  <ul className="bulletList">
+    <li><b>SEO:</b> Improve ranking on Google</li>
+    <li><b>Social Media Marketing:</b> Facebook, Instagram, etc.</li>
+    <li><b>Email Marketing:</b> Offers and updates to customers</li>
+    <li><b>Content Marketing:</b> Posts, blogs, and videos</li>
+    <li><b>Paid Ads:</b> Google or Facebook ads</li>
+    <li><b>Affiliate Marketing:</b> Earn commissions by promoting other brands’ products</li>
+  </ul>
+</div>
+
           </div>
 
           {/* Module 4 */}
