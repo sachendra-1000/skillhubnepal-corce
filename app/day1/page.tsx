@@ -63,7 +63,7 @@ export default function Page() {
         <div className="founderContent">
           <div className="left">
             <div className="portrait">
-              <img src="/images/founder.jpg" alt="Founder portrait" />
+              <img src="/images/maish-sir.jpg" alt="Founder portrait" />
             </div>
 
             <div className="tags">
