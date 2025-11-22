@@ -35,6 +35,37 @@ export default function Page() {
         </p>
       </section>
 
+      {/* Side‑by‑side image + text */}
+      <section className="splitSection">
+        <div className="splitImage">
+          <img
+            src="/images/approve.jpg"
+            alt="Learners growing their digital skills online"
+          />
+        </div>
+
+        <div className="splitText">
+          <h2 className="splitHeading">Government‑Approved</h2>
+          <p className="splitBody">
+            Skill Hub Nepal is a government-approved e-learning company dedicated to providing
+            high-quality digital skills training across Nepal. It offers accessible, affordable,
+            and industry-focused courses that empower students, professionals, and entrepreneurs
+            to succeed in today’s digital era.
+          </p>
+          <p className="splitBody">
+            With practical learning, expert guidance, and real-world projects, Skill Hub Nepal
+            helps learners build confidence and career-ready skills. Its mission is to bridge
+            Nepal’s digital skill gap by offering updated, globally relevant training programs.
+          </p>
+
+          <ul className="splitList">
+            <li>Accessible & affordable online courses</li>
+            <li>Real-world projects & expert mentors</li>
+            <li>Career-focused, globally relevant skills</li>
+          </ul>
+        </div>
+      </section>
+
       {/* Mission and Vision */}
       <section className="benefits">
         <h3 className="benefitsHeading">OUR MISSION AND VISION</h3>
@@ -42,16 +73,20 @@ export default function Page() {
         <section className="vision">
           <h2 className="visionHeading">COMPANY MISSION</h2>
           <p className="visionBody">
-            At Skill Hub Nepal, we empower individuals through diverse online learning opportunities that build digital skills. Our affiliate program helps learners earn while they grow, creating a sustainable path to success.
-             We promote a positive environment that encourages creativity, collaboration, and mutual support.
+            At Skill Hub Nepal, we empower individuals through diverse online learning
+            opportunities that build digital skills. Our affiliate program helps learners
+            earn while they grow, creating a sustainable path to success. We promote a
+            positive environment that encourages creativity, collaboration, and mutual support.
           </p>
         </section>
 
         <section className="vision" style={{ marginTop: 16 }}>
           <h2 className="visionHeading">COMPANY VISION</h2>
           <p className="visionBody">
-            At Skill Hub Nepal, we aim to become a global leader in online earning and affiliate marketing. Our goal is to empower individuals to build skills, gain financial independence, and succeed in the digital world. 
-            We strive to create a supportive community that promotes growth, learning, and collaboration.
+            At Skill Hub Nepal, we aim to become a global leader in online earning and affiliate
+            marketing. Our goal is to empower individuals to build skills, gain financial
+            independence, and succeed in the digital world. We strive to create a supportive
+            community that promotes growth, learning, and collaboration.
           </p>
         </section>
       </section>
@@ -74,8 +109,10 @@ export default function Page() {
 
           <div className="right">
             <p className="blurb">
-              Manish Thapa Magar, the founder and CEO of Skill Hub Nepal, leads the company with a clear vision and strong values. His goal is to empower people with essential digital skills and promote the power of education. Under his leadership,
-               Skill Hub Nepal has become a trusted name in quality learning, inspiring learners across Nepal.
+              Manish Thapa Magar, the founder and CEO of Skill Hub Nepal, leads the company with
+              a clear vision and strong values. His goal is to empower people with essential
+              digital skills and promote the power of education. Under his leadership, Skill Hub
+              Nepal has become a trusted name in quality learning, inspiring learners across Nepal.
             </p>
           </div>
         </div>
@@ -88,23 +125,21 @@ export default function Page() {
         </a>
       </div>
 
-      {/* Global base */}
       <style jsx global>{`
         html,
         body {
           margin: 0;
           padding: 0;
-          background: #000; /* black */
-          color: #fff;      /* white text */
+          background: #000;
+          color: #fff;
+          -webkit-font-smoothing: antialiased;
         }
       `}</style>
 
-      {/* Styles */}
       <style jsx>{`
         .page {
-          /* Unified with the "upper" palette */
-          --bg: #000000;   /* black */
-          --text: #ffffff; /* white */
+          --bg: #000000;
+          --text: #ffffff;
           --panel: #23263a;
           --card: #181a2a;
           --muted: #a1a1aa;
@@ -123,7 +158,6 @@ export default function Page() {
           gap: 24px;
         }
 
-        /* Hero */
         .hero {
           max-width: 1100px;
           width: 100%;
@@ -152,7 +186,6 @@ export default function Page() {
           max-width: 720px;
         }
 
-        /* Vision panel */
         .vision {
           max-width: 1100px;
           width: 100%;
@@ -181,6 +214,98 @@ export default function Page() {
           line-height: 1.6;
         }
 
+        /* Split section (image + text) */
+        .splitSection {
+          max-width: 1100px;
+          width: 100%;
+          display: grid;
+          grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+          gap: 32px;
+          align-items: center;
+          background: radial-gradient(
+              circle at top left,
+              rgba(168, 85, 247, 0.14),
+              transparent 55%
+            ),
+            var(--panel);
+          border-radius: 16px;
+          padding: 26px 22px 30px;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .splitImage {
+          position: relative;
+          border-radius: 14px;
+          overflow: hidden;
+          background: radial-gradient(circle at top, #4f46e5, #0f172a);
+          box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+        }
+
+        .splitImage::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(
+            circle at top left,
+            rgba(255, 255, 255, 0.08),
+            transparent 55%
+          );
+          pointer-events: none;
+        }
+
+        /* UPDATED: show full image */
+        .splitImage img {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain; /* show full image without cropping */
+        }
+
+        .splitText {
+          text-align: left;
+        }
+
+        .splitHeading {
+          margin: 4px 0 12px;
+          font-weight: 800;
+          font-size: clamp(22px, 3vw, 28px);
+          background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        .splitBody {
+          margin: 0 0 10px;
+          color: #e9e9ee;
+          opacity: 0.9;
+          font-size: 14px;
+          line-height: 1.7;
+        }
+
+        .splitList {
+          list-style: none;
+          padding: 0;
+          margin: 14px 0 0;
+          display: grid;
+          gap: 8px;
+          color: #f4f4ff;
+          font-size: 14px;
+        }
+
+        .splitList li {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .splitList li::before {
+          content: "●";
+          font-size: 10px;
+          color: var(--accent-start);
+        }
+
         /* Mission/Vision container */
         .benefits {
           max-width: 1100px;
@@ -203,14 +328,14 @@ export default function Page() {
           border-radius: 14px;
           background: var(--panel);
           border: 1px solid rgba(255, 255, 255, 0.06);
-          padding: 22px 20px 26px;
+          padding: 24px 20px 28px;
           box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
         }
         .founderTitle {
-          margin: 6px 0 14px;
+          margin: 6px 0 18px;
           text-align: center;
           font-weight: 800;
-          font-size: clamp(26px, 4.6vw, 48px);
+          font-size: clamp(26px, 4.6vw, 40px);
           background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
           -webkit-background-clip: text;
           background-clip: text;
@@ -228,8 +353,8 @@ export default function Page() {
           gap: 14px;
         }
         .portrait {
-          width: clamp(180px, 26vw, 280px);
-          height: clamp(180px, 26vw, 280px);
+          width: clamp(180px, 26vw, 260px);
+          height: clamp(180px, 26vw, 260px);
           border-radius: 999px;
           overflow: hidden;
           border: 4px solid rgba(168, 85, 247, 0.4);
@@ -274,14 +399,13 @@ export default function Page() {
           color: #e9e9ee;
           opacity: 0.9;
           font-size: clamp(14px, 1.55vw, 16px);
-          line-height: 1.6;
+          line-height: 1.7;
           font-weight: 400;
           text-align: center;
           max-width: 760px;
           margin: 0;
         }
 
-        /* CTA */
         .ctaWrap {
           margin-top: 18px;
         }
@@ -295,12 +419,49 @@ export default function Page() {
           background: linear-gradient(90deg, var(--blue-start), var(--blue-end));
           box-shadow: 0 10px 26px rgba(37, 99, 235, 0.4);
           cursor: pointer;
+          font-size: 14px;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+        .ctaBlue:hover {
+          transform: translateY(-1px) scale(1.02);
+          box-shadow: 0 14px 32px rgba(37, 99, 235, 0.55);
+          filter: brightness(1.05);
+        }
+
+        @media (max-width: 960px) {
+          .splitSection {
+            grid-template-columns: 1fr;
+            padding: 22px 18px 24px;
+          }
+          .splitText {
+            text-align: center;
+          }
+          .splitList {
+            max-width: 360px;
+            margin: 14px auto 0;
+            text-align: left;
+          }
         }
 
         @media (max-width: 860px) {
           .founderContent {
             grid-template-columns: 1fr;
             gap: 18px;
+          }
+          .right {
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .page {
+            padding-inline: 14px;
+          }
+          .vision {
+            padding-inline: 16px;
+          }
+          .founderCard {
+            padding-inline: 16px;
           }
         }
       `}</style>
