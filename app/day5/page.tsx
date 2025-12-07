@@ -43,7 +43,7 @@ export default function Page() {
               content. Provide value and attract your target audience.
               <Image
                 src="/images/Content-marketing.jpg"
-                alt="Branding example with logo and visual identity"
+                alt="Content marketing example"
                 width={300}
                 height={200}
                 className="mt-2 rounded-lg"
@@ -55,7 +55,7 @@ export default function Page() {
               conversations, share insights, and build a community.
               <Image
                 src="/images/Social-media-engagement.png"
-                alt="Branding example with logo and visual identity"
+                alt="Social media engagement example"
                 width={300}
                 height={200}
                 className="mt-2 rounded-lg"
@@ -67,7 +67,7 @@ export default function Page() {
               online and offline. Attend virtual meetups and industry events.
               <Image
                 src="/images/Networking.jpg"
-                alt="Branding example with logo and visual identity"
+                alt="Networking example"
                 width={300}
                 height={200}
                 className="mt-2 rounded-lg"
@@ -82,12 +82,11 @@ export default function Page() {
               your skills to potential employers or clients.
               <Image
                 src="/images/Portfolio.jpg"
-                alt="Branding example with logo and visual identity"
+                alt="Portfolio example"
                 width={300}
                 height={200}
                 className="mt-2 rounded-lg"
               />
-
             </Block>
 
             <Block title="Launch a Pilot Project">
@@ -95,26 +94,191 @@ export default function Page() {
               practical experience and gather feedback.
               <Image
                 src="/images/Pilot-Project.jpg"
-                alt="Branding example with logo and visual identity"
+                alt="Pilot project example"
                 width={300}
                 height={200}
                 className="mt-2 rounded-lg"
               />
             </Block>
-
-           
 
             <Block title="Set Clear Goals">
               Define what you want to achieve. Set measurable, short‑term and
               long‑term goals to track your progress.
               <Image
                 src="/images/Set-Clear-Goals.jpg"
-                alt="Branding example with logo and visual identity"
+                alt="Goal setting example"
                 width={300}
                 height={200}
                 className="mt-2 rounded-lg"
               />
             </Block>
+          </Panel>
+        </section>
+
+        {/* Lead Generation in Affiliate Marketing */}
+        <section className="mt-10">
+          <Panel
+            title="Lead Generation in Affiliate Marketing"
+            accent="text-emerald-300"
+            icon={<MegaphoneIcon />}
+          >
+            <div className="space-y-6 text-sm leading-relaxed text-[#a1a1aa]">
+              <p>
+                Having great content and a strong profile is important, but without leads, your
+                business cannot move forward. Just like a car cannot run without fuel, your
+                affiliate business cannot grow without leads.{" "}
+                <span className="font-semibold text-emerald-300">
+                  More leads = more customers = more profit.
+                </span>
+              </p>
+
+              <div>
+                <h4 className="font-semibold text-white">
+                  Things to Remember Before Starting Lead Generation
+                </h4>
+                <ol className="mt-2 space-y-3 list-decimal pl-5">
+                  <li>
+                    <span className="font-semibold text-white">Educate Your Audience</span>
+                    <p className="mt-1">
+                      Be a giver. Provide value first. Your audience will judge whether you can
+                      guide them or not. When you consistently give value, people start trusting you
+                      and become interested in working with you.
+                    </p>
+                  </li>
+                  <li>
+                    <span className="font-semibold text-white">
+                      Everyone Is Not Your Customer
+                    </span>
+                    <p className="mt-1">
+                      Don’t try to convince everyone. Focus on people who truly need your offer.
+                    </p>
+                  </li>
+                  <li>
+                    <span className="font-semibold text-white">
+                      Have a Clear Follow-Up Process
+                    </span>
+                    <p className="mt-1">
+                      After generating leads, you must know how to guide them properly. If you don’t
+                      have a clear system, you will lose your leads.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-white">Types of Lead Generation</h4>
+                <p className="mt-1">There are 2 main types:</p>
+              </div>
+
+              {/* Organic Lead Generation */}
+              <div>
+                <h5 className="font-semibold text-emerald-300">
+                  1. Organic Lead Generation (without spending money)
+                </h5>
+                <p className="mt-1">
+                  Organic lead generation means attracting people to you through value and content.
+                </p>
+
+                <p className="mt-2 font-semibold text-white">Examples:</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5">
+                  <li>Attraction marketing</li>
+                  <li>Content creation</li>
+                  <li>Magnetic marketing</li>
+                </ul>
+
+                <p className="mt-3 font-semibold text-white">Organic Platforms:</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5">
+                  <li>Instagram Reels</li>
+                  <li>YouTube Shorts</li>
+                  <li>TikTok Reels</li>
+                </ul>
+
+                <div className="mt-4">
+                  <h6 className="font-semibold text-white">
+                    How to Promote Your Opportunity Through Reels
+                  </h6>
+                  <p className="mt-1">
+                    If you plan to upload <span className="font-semibold">10 reels</span>:
+                  </p>
+                  <ul className="mt-1 list-disc space-y-1 pl-5">
+                    <li>
+                      <span className="font-semibold">6 reels</span> should be valuable,
+                      educational, or lifestyle-related.
+                    </li>
+                    <li>
+                      <span className="font-semibold">4 reels</span> can be direct promotional
+                      content.
+                    </li>
+                  </ul>
+                  <p className="mt-1">
+                    This keeps your audience engaged and builds long-term trust.
+                  </p>
+                </div>
+
+                <div className="mt-4">
+                  <h6 className="font-semibold text-white">
+                    DM Strategy (How to Reply Professionally)
+                  </h6>
+                  <p className="mt-1">
+                    People don’t accept your offer if your personal brand and social media presence
+                    are weak. You must look professional.
+                  </p>
+
+                  <p className="mt-2 font-semibold text-emerald-300">Example DM Reply:</p>
+                  <div className="mt-1 whitespace-pre-line rounded-lg bg-black/40 p-3 text-xs md:text-sm">
+                    {`Hi,
+Hello Namrata,
+
+Are you looking for ways to make money online?
+I have an opportunity for you associated with a platform that teaches skill-based education.
+
+If you want to know more, just type “yes”.`}
+                  </div>
+
+                  <p className="mt-3 font-semibold text-emerald-300">
+                    When they reply “yes”:
+                  </p>
+                  <div className="mt-1 whitespace-pre-line rounded-lg bg-black/40 p-3 text-xs md:text-sm">
+                    {`Glad to see a positive response from you!
+We have limited seats, so if you are serious about learning, send “Hi” + your name to my WhatsApp: 276372637 for complete details.`}
+                  </div>
+
+                  <div className="mt-4">
+                    <p className="font-semibold text-white">
+                      Don’t Forget to Upload Stories
+                    </p>
+                    <p className="mt-1">
+                      Stories increase trust and conversions. Regularly share your:
+                    </p>
+                    <ul className="mt-1 list-disc space-y-1 pl-5">
+                      <li>Daily work</li>
+                      <li>Team updates</li>
+                      <li>Testimonials</li>
+                      <li>Earnings (genuine only)</li>
+                      <li>Behind-the-scenes</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Inorganic Lead Generation */}
+              <div>
+                <h5 className="font-semibold text-rose-300">
+                  2. Inorganic Lead Generation (paid methods)
+                </h5>
+                <p className="mt-1">
+                  Inorganic lead generation means investing money to get faster and more scalable
+                  results.
+                </p>
+                <p className="mt-2 font-semibold text-white">Examples:</p>
+                <ul className="mt-1 list-disc space-y-1 pl-5">
+                  <li>Facebook Ads</li>
+                  <li>Paid promotions</li>
+                  <li>Shoutouts</li>
+                  <li>Collaborations</li>
+                </ul>
+              </div>
+            </div>
           </Panel>
         </section>
 
@@ -191,7 +355,14 @@ function Block({ title, children }: { title: string; children: ReactNode }) {
 
 function ArrowRightIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden
+    >
       <path d="M5 12h14" />
       <path d="M13 5l7 7-7 7" />
     </svg>
@@ -200,7 +371,14 @@ function ArrowRightIcon({ className = "" }: { className?: string }) {
 
 function MegaphoneIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden
+    >
       <path d="M3 11v2a2 2 0 002 2h2l5 3V6l-5 3H5a2 2 0 00-2 2z" />
       <path d="M14 10h1a5 5 0 015 5v0" />
     </svg>
@@ -209,7 +387,14 @@ function MegaphoneIcon() {
 
 function PlanIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden
+    >
       <rect x="3" y="4" width="18" height="14" rx="2" />
       <path d="M7 8h10M7 12h6" />
     </svg>
